@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.6 -->
+    <script>
+        window.materialVersion = "1.5.6"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0',
+            '1.5.2',
+            '1.5.5'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+    <link rel="dns-prefetch" href="https://busuanzi.ibruce.info">
+
+
+
+
+
+
+
+    <link rel="dns-prefetch" href="https://fonts.proxy.ustclug.org">
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            Hibernate 学习笔记 | 
+        
+        新世界的Kami
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.ico">
+    <link rel="icon" href="/img/logo.png">
+
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" itemprop="description" content="Hibernate API1. Configuration 类Configuration类用来管理配置文件信息，我们可以创建一个configuration实例来管理相应的配置文档，但是通常只创建一个configuration实例。
+Configuration 加载配置文件的方式：
+
+xml作为配置文件
+properties作为配置文件
+不使用配置文件
+">
+    <meta name="keywords" content=",Java,Hibernate,ORM 框架,JPA">
+    <meta name="theme-color" content="#0097A7">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?NKhlKQkXw/c66TR5p4wO+w==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg.png);
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 500ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.proxy.ustclug.org/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="新世界的Kami">
+    <meta name="msapplication-starturl" content="https://newkami.cn/2017/10/23/hibernate-note/">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="新世界的Kami">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/logo.png">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="https://newkami.cn/2017/10/23/hibernate-note/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Hibernate 学习笔记 | 新世界的Kami">
+    <meta property="og:image" content="/img/logo.png">
+    <meta property="og:description" content="Hibernate API1. Configuration 类Configuration类用来管理配置文件信息，我们可以创建一个configuration实例来管理相应的配置文档，但是通常只创建一个configuration实例。
+Configuration 加载配置文件的方式：
+
+xml作为配置文件
+properties作为配置文件
+不使用配置文件
+">
+    <meta property="og:article:tag" content="Java"> <meta property="og:article:tag" content="Hibernate"> <meta property="og:article:tag" content="ORM 框架"> <meta property="og:article:tag" content="JPA"> 
+
+    
+        <meta property="article:published_time" content="Mon Oct 23 2017 09:00:00 GMT+0800">
+        <meta property="article:modified_time" content="Sat Apr 07 2018 15:04:30 GMT+0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="https://newkami.cn/2017/10/23/hibernate-note/index.html">
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "https://newkami.cn/2017/10/23/hibernate-note/index.html",
+    "headline": "Hibernate 学习笔记",
+    "datePublished": "Mon Oct 23 2017 09:00:00 GMT+0800",
+    "dateModified": "Sat Apr 07 2018 15:04:30 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "FETE",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/author.jpg"
+        },
+        "description": "感谢你停下匆忙的脚步,你可以随意浏览,希望你开心"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "新世界的Kami",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/logo.png"
+        }
+    },
+    "keywords": ",Java,Hibernate,ORM 框架,JPA",
+    "description": "Hibernate API1. Configuration 类Configuration类用来管理配置文件信息，我们可以创建一个configuration实例来管理相应的配置文档，但是通常只创建一个configuration实例。
+Configuration 加载配置文件的方式：
+
+xml作为配置文件
+properties作为配置文件
+不使用配置文件
+",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span id="MD-burger-id" class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn" class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Hibernate-API"><span class="post-toc-text">Hibernate API</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-Configuration-类"><span class="post-toc-text">1. Configuration 类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-configure-方法"><span class="post-toc-text">1. configure() 方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-addResource-方法"><span class="post-toc-text">2. addResource() 方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-buildSessionFactory-方法"><span class="post-toc-text">3. buildSessionFactory() 方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-Session-类"><span class="post-toc-text">2. Session 类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-openSession-方法和-getCurrentSession-方法的联系和区别"><span class="post-toc-text">1. openSession() 方法和 getCurrentSession() 方法的联系和区别</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-Hibernate的对象标识符-OID"><span class="post-toc-text">2. Hibernate的对象标识符(OID)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-Hibernate对象的四种状态"><span class="post-toc-text">3. Hibernate对象的四种状态</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-get-方法和-load-方法"><span class="post-toc-text">4. get() 方法和 load() 方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-save-方法和-persist-方法"><span class="post-toc-text">5. save() 方法和 persist() 方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#6-update-方法"><span class="post-toc-text">6. update() 方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#7-saveOrUpdate-方法"><span class="post-toc-text">7. saveOrUpdate() 方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#8-merge-方法"><span class="post-toc-text">8. merge() 方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#9-delete-方法"><span class="post-toc-text">9. delete() 方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-Query-接口"><span class="post-toc-text">3. Query 接口</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-createQuery-方法"><span class="post-toc-text">1. createQuery() 方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-set系列方法"><span class="post-toc-text">1. set系列方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-uniqueResult-方法、"><span class="post-toc-text">2. uniqueResult() 方法、</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-list-方法"><span class="post-toc-text">3. list() 方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-setFirstResult-方法和-setMaxResults-方法"><span class="post-toc-text">4. setFirstResult() 方法和 setMaxResults() 方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-Session-缓存方法"><span class="post-toc-text">4. Session 缓存方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-evict-方法"><span class="post-toc-text">1. evict() 方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-clear-方法"><span class="post-toc-text">2. clear() 方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-flush-方法"><span class="post-toc-text">3. flush() 方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-refresh-方法"><span class="post-toc-text">4. refresh() 方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#5-close-方法"><span class="post-toc-text">5. close() 方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-Transaction-接口"><span class="post-toc-text">5. Transaction 接口</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-beginTransaction-方法"><span class="post-toc-text">1. beginTransaction() 方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-getTransaction-方法"><span class="post-toc-text">2. getTransaction() 方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-commit-方法"><span class="post-toc-text">3. commit() 方法</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-rollback-方法"><span class="post-toc-text">4. rollback() 方法</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#6-Criteria-接口"><span class="post-toc-text">6. Criteria 接口</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-DetachedCriteria-接口"><span class="post-toc-text">1. DetachedCriteria 接口</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-Restrictions-工具类"><span class="post-toc-text">2. Restrictions 工具类</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-Order-工具类"><span class="post-toc-text">3. Order 工具类</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#4-Projections-工具类"><span class="post-toc-text">4. Projections 工具类</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-映射配置文件"><span class="post-toc-text">2. 映射配置文件</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-主键生成策略"><span class="post-toc-text">3. 主键生成策略</span></a></li></ol></li></ol><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#3-Hibernate-注解"><span class="post-toc-text">3. Hibernate 注解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-类级别注解"><span class="post-toc-text">1. 类级别注解</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-属性级别注解"><span class="post-toc-text">2. 属性级别注解</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#1-与主键相关注解"><span class="post-toc-text">1. 与主键相关注解</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#2-与非主键相关注解"><span class="post-toc-text">2.与非主键相关注解</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#3-无注解属性的默认值"><span class="post-toc-text">3. 无注解属性的默认值</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#4-Hibernate-三种继承映射方式注解实现"><span class="post-toc-text">4. Hibernate 三种继承映射方式注解实现</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-SINGLE-TABLE"><span class="post-toc-text">1. SINGLE_TABLE</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-TABLE-PER-CLASS"><span class="post-toc-text">2. TABLE_PER_CLASS</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-JOINED"><span class="post-toc-text">3. JOINED</span></a></li></ol></li>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 2 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                Hibernate 学习笔记
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/author.jpg" width="44px" height="44px" alt="Author Avatar">
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>FETE</strong>
+        <span>10月 23, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Hibernate/">Hibernate</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/JPA/">JPA</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Java/">Java</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/ORM-框架/">ORM 框架</a>
+    </li></ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+        
+            <!-- Busuanzi Views -->
+            <a class="post_share-link" href="#">
+                <li class="mdl-menu__item">
+                    <span id="busuanzi_container_page_pv">
+                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
+                    </span>
+                </li>
+            </a>
+        
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Hibernate 学习笔记&url=https://newkami.cn/2017/10/23/hibernate-note/index.html&pic=https://newkami.cn/img/favicon.ico&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Hibernate 学习笔记&url=https://newkami.cn/2017/10/23/hibernate-note/index.html&via=FETE" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://newkami.cn/2017/10/23/hibernate-note/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://newkami.cn/2017/10/23/hibernate-note/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h2 id="Hibernate-API"><a href="#Hibernate-API" class="headerlink" title="Hibernate API"></a>Hibernate API</h2><h3 id="1-Configuration-类"><a href="#1-Configuration-类" class="headerlink" title="1. Configuration 类"></a>1. Configuration 类</h3><p>Configuration类用来管理配置文件信息，我们可以创建一个configuration实例来管理相应的配置文档，但是通常只创建一个configuration实例。</p>
+<p>Configuration 加载配置文件的方式：</p>
+<ul>
+<li>xml作为配置文件</li>
+<li>properties作为配置文件</li>
+<li>不使用配置文件</li>
+</ul>
+<a id="more"></a>
+<h4 id="1-configure-方法"><a href="#1-configure-方法" class="headerlink" title="1. configure() 方法"></a>1. configure() 方法</h4><p>用来在加载xml配置文件</p>
+<pre><code class="java">Configuration conf =new Configuration();
+conf.configure(&quot;xxx.xml&quot;);
+</code></pre>
+<p>如果配置文件是规范的命名 <code>hibernate.cfg.xml</code>，则可以写成</p>
+<pre><code class="java">conf.configure();
+</code></pre>
+<h4 id="2-addResource-方法"><a href="#2-addResource-方法" class="headerlink" title="2. addResource() 方法"></a>2. addResource() 方法</h4><p>此方法用来硬加载映射配置文件。在主配置文件中没有使用<code>&lt;mapping resource=&quot;xxx.hbm.xml&quot;/&gt;</code>加载映射文件，可使用<code>conf.addResource(&quot;xxx.hbm.xml&quot;);</code>来硬加载映射配置文件。</p>
+<h4 id="3-buildSessionFactory-方法"><a href="#3-buildSessionFactory-方法" class="headerlink" title="3. buildSessionFactory() 方法"></a>3. buildSessionFactory() 方法</h4><p>此方法用来得到<code>SessionFactory</code>对象。</p>
+<pre><code class="java">SessionFactory sessions = conf.buildSessionFactory();
+</code></pre>
+<p>SessionFactory接口负责初始化Hibernate。它充当数据存储源的代理，并负责创建Session对象。</p>
+<p>SessionFactory是线程安全的，可以被多个线程调用。需要注意的是SessionFactory并不是轻量级的，因此，一般情况下，一个项目通常只需要一个SessionFactory就够。当需要操作多个数据库时，可以为每个数据库指定一个SessionFactory。</p>
+<h3 id="2-Session-类"><a href="#2-Session-类" class="headerlink" title="2. Session 类"></a>2. Session 类</h3><p>Session 是用来表示，应用程序和数据库的一次交互（会话）。在Session中，包含了一般的对象持久化方法（CRUD）。</p>
+<p>Session是一个轻量级对象（线程不安全），通常将每个Session实例和一个数据库事务绑定，也就是每执行一个数据库事务，都应该先创建一个新的Session实例，在使用Session后，还需要关闭Session。</p>
+<h4 id="1-openSession-方法和-getCurrentSession-方法的联系和区别"><a href="#1-openSession-方法和-getCurrentSession-方法的联系和区别" class="headerlink" title="1. openSession() 方法和 getCurrentSession() 方法的联系和区别"></a>1. openSession() 方法和 getCurrentSession() 方法的联系和区别</h4><p>相同：</p>
+<p><code>openSession()</code> 方法和 <code>getCurrentSession()</code> 方法都可以得到Session对象</p>
+<p>区别：</p>
+<ul>
+<li>getCurrentSession()创建的Session会绑定到当前的线程中去，而采用OpenSession()则不会。</li>
+<li>getCurrentSession()创建的Session会在事务commit或rollback后会自动关闭，采用OpenSession()必须手动关闭。</li>
+<li>getCurrentSession()需要在Hibernate.cfg.xml配置文件中加入相关配置。</li>
+</ul>
+<p>getCurrentSession() 相关配置：</p>
+<ul>
+<li>如果是本地事务，及JDBC一个数据库：<pre><code class="xml">&lt;propety name=&quot;Hibernate.current_session_context_class&quot;&gt;thread&lt;/propety&gt;
+</code></pre>
+</li>
+<li>如果是全局事务，及jta事务、多个数据库资源或是事务资源：<pre><code class="xml">&lt;propety name=&quot;Hibernate.current_session_context_class&quot;&gt;jta&lt;/propety&gt;
+</code></pre>
+</li>
+</ul>
+<p><strong>注意：如果只使用Hibernate没有使用其它框架时，使用<code>getCurrentSession()</code>方法必须要手动开启事务，不然会抛异常！！！</strong></p>
+<h4 id="2-Hibernate的对象标识符-OID"><a href="#2-Hibernate的对象标识符-OID" class="headerlink" title="2. Hibernate的对象标识符(OID)"></a>2. Hibernate的对象标识符(OID)</h4><p>Hibernate 使用对象标识符(OID)来标识对象的唯一性。OID是关系数据库中主键在Java对象模型中的等价物。</p>
+<p>为了保证持久化对象的OID的唯一性和不可变性，通常由Hibernate或底层数据库来给OID赋值。因此，可以把OID的set方法设为private类型，get方法设为public类型，这使得Java应用程序可以读取持久化对象的OID，但禁止了Java应用程序对OID的修改。</p>
+<h4 id="3-Hibernate对象的四种状态"><a href="#3-Hibernate对象的四种状态" class="headerlink" title="3. Hibernate对象的四种状态"></a>3. Hibernate对象的四种状态</h4><p>状态是对对象所处情境的描述，在对hibernate定义了几种状态之后即方便了为人所达成共识，同时也能更好的理解hibernate的工作机制。</p>
+<p>对象的四种状态：</p>
+<ul>
+<li><p>瞬时态(Transient)：</p>
+<p>  也称为临时态或自由态。创建Session后，由 <code>new</code> 操作符创建的对象，且不在Session的缓存中的状态。数据库记录没有，也没有OID。如果瞬时对象在程序中没有被引用，它会被垃圾回收器销毁。</p>
+</li>
+<li><p>持久态(Persistent)：</p>
+<p>  对象被持久化了，存在于Session缓存中的状态。数据库记录有，OID也有。Hibernate会检测到处于持久状态的对象的任何改动，在当前操作单元(unit of work)执行完毕时将对象数据(state)与数据库同步，开发者不需要手动执行UPDATE。</p>
+</li>
+<li><p>游离态(Detached)：</p>
+<p>  也称为脱管态。对象持久化后，Session关闭了，或执行了evict()方法，亦或执行了clear()方法的状态。不在Session缓存之中，但数据库记录有，也有OID。游离态对象不能直接持久化，需要重新保存。</p>
+</li>
+<li><p>删除态(Deleted)：</p>
+<p>  调用Session的delete()方法之后，对象就变成删除态。Session缓存中仍然有对象的信息，对删除态对象的引用依然有效，对象可继续被修改。数据库记录没有，OID还在。删除态对象如果重新关联到某个新的Session上，会重新持久化。</p>
+</li>
+</ul>
+<p>对象的四种状态图示：</p>
+<p><img src="https://i.loli.net/2017/10/19/59e851464cdf3.png" alt="对象的4种状态"></p>
+<p>其它状态对象持久化操作：</p>
+<ul>
+<li>持久态时，则基本上什么也不需要做。</li>
+<li>瞬时态时，则如需对其持久化，执行save/saveOrUpdate/persist操作。</li>
+<li>删除态时，则如需对其持久化，执行persist操作。</li>
+<li>游离态时，则需要执行update/saveOrUpdate操作。</li>
+</ul>
+<font color="red" size="5"><br><br><strong>注意：当实体类的主键生成策略为<code>assigned</code>时，临时态和游离态等同！！！</strong><br></font>
+
+<h4 id="4-get-方法和-load-方法"><a href="#4-get-方法和-load-方法" class="headerlink" title="4. get() 方法和 load() 方法"></a>4. get() 方法和 load() 方法</h4><p>相同：</p>
+<p><code>get(Class c,OID)</code> 方法和 <code>load(Class c,OID)</code> 方法都是根据主键查询，返回一个持久态对象。</p>
+<p>区别：</p>
+<ul>
+<li><p>get()返回的是查询出来的实体对象，而load()查询出来的是一个目标实体的代理对象。</p>
+</li>
+<li><p>get()在调用的时候首先查找Session一级缓存，然后查找二级缓存，然后再发出SQL语句查询；<br>而load()首先查找Session一级缓存，然后查找二级缓存，若找不到则返回代理对象，延迟到真正使用对象非主键属性时才发出sql语句并且将被代理对象属性<code>target</code>填充上，但是如果这个动作发生在Session被关闭后的话就会抛出<code>LazyInitializationException</code>。</p>
+</li>
+<li><p>当查询结果为空时，get()抛出 <code>NullPointerException</code> 异常；load()抛出 <code>ObjectNotFoundException</code> 异常。</p>
+</li>
+</ul>
+<h4 id="5-save-方法和-persist-方法"><a href="#5-save-方法和-persist-方法" class="headerlink" title="5. save() 方法和 persist() 方法"></a>5. save() 方法和 persist() 方法</h4><p>相同：</p>
+<p>save(Object o) 方法和 persist(Object o) 方法都可以把一个临时态对象持久化，保存到数据库里，插入一条新记录。</p>
+<p>区别：</p>
+<ul>
+<li><p>persist()把一个临时态的对象持久化时，“不保证”OID被立刻填入到持久化实例的主键中，标识符的填入可能被推迟到flush的时间。</p>
+</li>
+<li><p>persist()无返回值，当它在一个事务外部被调用的时候并不向数据库发送 <code>INSERT</code> SQL语句；save()返回持久化对象的OID，所以它会立即向数据库发送 <code>INSERT</code> SQL语句，不管是不是在事务内部还是外部</p>
+</li>
+</ul>
+<h4 id="6-update-方法"><a href="#6-update-方法" class="headerlink" title="6. update() 方法"></a>6. update() 方法</h4><p>update(Object o)把一个游离态对象持久化，修改一条主键与OID相对应的记录，无返回值。</p>
+<h4 id="7-saveOrUpdate-方法"><a href="#7-saveOrUpdate-方法" class="headerlink" title="7. saveOrUpdate() 方法"></a>7. saveOrUpdate() 方法</h4><p>saveOrUpdate(Object o)方法同时包含了save(Object o)与update(Object o)方法的功能。如果：</p>
+<ul>
+<li>参数是临时态对象，就调用save()方法；</li>
+<li>参数是游离态对象，就调用update()方法；</li>
+<li>参数是持久态对象，那就直接返回。</li>
+<li>参数的OID与本session关联的对象的OID相同，则抛出一个异常</li>
+</ul>
+<p>那么，saveOrUpdate()方法如何判断一个对象处于临时状态还是游离状态呢？如果满足以下情况之一，Hibernate就把它作为临时对象。</p>
+<ul>
+<li>Java对象的OID取值为<code>null</code>。</li>
+<li>Java对象具有<code>version</code>属性并且取值为<code>null</code>。</li>
+<li>对象映射文件中设置了<code>unsaved-value</code>属性，并且OID取值与<code>unsaved-value</code>属性值匹配。</li>
+<li>在对象映射文件中为<code>version</code>属性设置了<code>unsaved-value</code>属性，并且<code>version</code>属性取值与<code>unsaved-value</code>属性值匹配。</li>
+<li>自定义了Hibernate的Interceptor实现类，并且Interceptor的<code>isUnsaved()</code>方法返回<code>Boolean.TRUE</code>。</li>
+</ul>
+<h4 id="8-merge-方法"><a href="#8-merge-方法" class="headerlink" title="8. merge() 方法"></a>8. merge() 方法</h4><p>hibernate中，是不允许出现相同的OID对象有两个不同session同时关联的情况，不然会抛出异常，可以使用<code>merge(Object object)</code>这个方法来解决这一问题。</p>
+<ol>
+<li>参数是临时态对象时，merge()会保存数据，根据主键生成策略插入一条新记录；</li>
+<li><p>参数是游离态时对象(对象A)时，如果不存在与之OID对应的主键的记录，则插入一条新记录；</p>
+<p> 如果存在与之OID相对应的主键的记录，则根据主键从数据库中加载出该对象(对象B)，然后将参数object(对象A)中的属性拷贝到加载出来的那个对象上(对象B)，最后返回该持久化对象(对象B)，同时数据库里的记录的变更成参数object(对象A)的数据。<strong>注意，对象B是持久态，但是参数object(对象A)还是游离态！</strong></p>
+</li>
+<li>如果Session中存在与参数objcet(对象A)具有相同OID属性的对象(对象B)，那么直接将参数object(对象A)中的属性拷贝到该持久化对象上(对象B)，然后返回该持久化对象(对象B)，同时数据库里的记录的变更成参数object(对象A)的数据。<strong>注意，对象B是持久态，但是参数object(对象A)还是游离态！</strong></li>
+</ol>
+<h4 id="9-delete-方法"><a href="#9-delete-方法" class="headerlink" title="9. delete() 方法"></a>9. delete() 方法</h4><p>delete(Object o)把一个持久态对象从Session中删除，转变为删除态对象，同时删除数据库里一条记录。</p>
+<h3 id="3-Query-接口"><a href="#3-Query-接口" class="headerlink" title="3. Query 接口"></a>3. Query 接口</h3><p>Query是Hibernate的查询接口，用于从数据存储源查询对象及控制执行查询的过程，Query包装了一个HQL查询语句。</p>
+<p>Query对象在Session对象关闭之前有效，否则会抛出<code>SessionException</code>异常。因为Session对象就想JDBC中的Connection 对象，即数据库的一次连接。关闭Connection对象，Statement对象就不能再使用，所以关闭Session后就不能再使用Query对象了。</p>
+<h4 id="1-createQuery-方法"><a href="#1-createQuery-方法" class="headerlink" title="1. createQuery() 方法"></a>1. createQuery() 方法</h4><p><code>createQuery(String hql)</code>执行hql语句，得到Query对象。</p>
+<h4 id="1-set系列方法"><a href="#1-set系列方法" class="headerlink" title="1. set系列方法"></a>1. set系列方法</h4><p>setxxx() 用于设置HQL语句中问号或者变量的值；</p>
+<p>设置HQL语句中问号或者变量的值有两种使用方式：</p>
+<ol>
+<li>如：<code>setString(int position,String value)</code>，设置HQL中的”?”的值，其中<code>position</code>代表”?”在HQL中的位置，<code>value</code>是要为”?”设置的值。</li>
+<li>如：<code>setString(String paraName,String value)</code>，设置”:”后跟变量的值，其中<code>paraName</code>代表HQL中”:”后的变量名，<code>value</code>是该变量的值。</li>
+</ol>
+<h4 id="2-uniqueResult-方法、"><a href="#2-uniqueResult-方法、" class="headerlink" title="2. uniqueResult() 方法、"></a>2. uniqueResult() 方法、</h4><p><code>query.uniqueResult()</code> 返回查询结果,得到一个对象。</p>
+<h4 id="3-list-方法"><a href="#3-list-方法" class="headerlink" title="3. list() 方法"></a>3. list() 方法</h4><p><code>query.list()</code> 返回查询结果，得到一个List对象</p>
+<h4 id="4-setFirstResult-方法和-setMaxResults-方法"><a href="#4-setFirstResult-方法和-setMaxResults-方法" class="headerlink" title="4. setFirstResult() 方法和 setMaxResults() 方法"></a>4. setFirstResult() 方法和 setMaxResults() 方法</h4><p><code>query.setFirstResult(int rowNum)</code> 用于设置数据库起始查询行号；<br><code>query.setMaxResults(int pageSize)</code> 用于设置结果集每页的条数；</p>
+<p>这两个方法用于实现分页查询。</p>
+<h3 id="4-Session-缓存方法"><a href="#4-Session-缓存方法" class="headerlink" title="4. Session 缓存方法"></a>4. Session 缓存方法</h3><p>Hibernate中提供了两级缓存，一级缓存是Session级别的缓存，它属于事务范围的缓存，该级缓存由hibernate管理，应用程序无需干预；二级缓存是SessionFactory级别的缓存，该级缓存可以进行配置和更改，并且可以动态加载和卸载，hibernate还为查询结果提供了一个查询缓存，它依赖于二级缓存。</p>
+<h4 id="1-evict-方法"><a href="#1-evict-方法" class="headerlink" title="1. evict() 方法"></a>1. evict() 方法</h4><p><code>evict(Object o)</code> 作用是将session一级缓存中的指定的对象清除，将对象状态由持久态转换为游离态。</p>
+<h4 id="2-clear-方法"><a href="#2-clear-方法" class="headerlink" title="2. clear() 方法"></a>2. clear() 方法</h4><p><code>clear()</code> 作用是将session一级缓存中的所有对象全部清除，将对象状态由持久态转换为游离态。</p>
+<h4 id="3-flush-方法"><a href="#3-flush-方法" class="headerlink" title="3. flush() 方法"></a>3. flush() 方法</h4><p><code>flush()</code> 将session缓存中的数据推出到数据库，立即执行sql语句，但是不会提交事务。</p>
+<h4 id="4-refresh-方法"><a href="#4-refresh-方法" class="headerlink" title="4. refresh() 方法"></a>4. refresh() 方法</h4><p><code>refresh()</code> 会强制发送<code>SELECT</code>SQL语句，使数据库表中的记录更新到Session缓存的对象中。该方法的有效性与事务隔离级别有关，需要配置事务的隔离级别为read commited(读已提交)。</p>
+<h4 id="5-close-方法"><a href="#5-close-方法" class="headerlink" title="5. close() 方法"></a>5. close() 方法</h4><p><code>close()</code> 关闭当前的Session连接，清空Session缓存；如果事务没有开启，会在执行<code>close()</code> 之前调用一次<code>flush()</code>，强制数据同步到数据库。</p>
+<h3 id="5-Transaction-接口"><a href="#5-Transaction-接口" class="headerlink" title="5. Transaction 接口"></a>5. Transaction 接口</h3><p>Hibernate本身没有实现自己的事务管理功能，而是对底层JDBC事务或JTA事务的轻量级封装。</p>
+<h4 id="1-beginTransaction-方法"><a href="#1-beginTransaction-方法" class="headerlink" title="1. beginTransaction() 方法"></a>1. beginTransaction() 方法</h4><p><code>beginTransaction()</code>开启事务，也可以使用<code>getTransaction().begin()</code>开启；事务开启后会禁用自动提交，返回一个Transaction 对象。</p>
+<h4 id="2-getTransaction-方法"><a href="#2-getTransaction-方法" class="headerlink" title="2. getTransaction() 方法"></a>2. getTransaction() 方法</h4><p><code>getTransaction()</code>返回一个 Transaction 对象。</p>
+<h4 id="3-commit-方法"><a href="#3-commit-方法" class="headerlink" title="3. commit() 方法"></a>3. commit() 方法</h4><p><code>transaction.commit()</code> 事务提交；<br>手动提交后会恢复事务自动提交。</p>
+<h4 id="4-rollback-方法"><a href="#4-rollback-方法" class="headerlink" title="4. rollback() 方法"></a>4. rollback() 方法</h4><p><code>transaction.rollback()</code> 事务回滚</p>
+<h3 id="6-Criteria-接口"><a href="#6-Criteria-接口" class="headerlink" title="6. Criteria 接口"></a>6. Criteria 接口</h3><p>Criteria 是一个完全面向对象，可扩展的条件查询API，通过它完全不需要考虑数据库底层如何实现、SQL语句如何编写，是Hibernate框架的核心查询对象。</p>
+<p>Criteria 接口用于QBC(Query By Criteria) 查询。</p>
+<p>使用QBC查询，一般需要以下三个步骤：</p>
+<ul>
+<li>使用Session实例 的<code>createCriteria()</code>方法创建Criteria对象。(此方法在Hibernate 5.2 已被标记为过时)</li>
+<li>使用工具类Restrictions的方法为Criteria对象设置查询条件，Order工具类的方法设置排序方式，Projections工具类的方法进行统计和分组。</li>
+<li>使用Criteria对象的<code>list()</code>方法进行查询并返回结果。</li>
+</ul>
+<h4 id="1-DetachedCriteria-接口"><a href="#1-DetachedCriteria-接口" class="headerlink" title="1. DetachedCriteria 接口"></a>1. DetachedCriteria 接口</h4><p>Hibernate 设计了 CriteriaSpecification 作为 Criteria 的父接口，下面提供了 Criteria和DetachedCriteria。</p>
+<p>Criteria 和 DetachedCriteria 的主要区别在于创建的形式不一样， Criteria 是在线的，是由 Session 进行创建；而 DetachedCriteria 是离线的，创建时无需Session。</p>
+<p>DetachedCriteria 提供了 2 个静态方法 <code>forClass(Class c)</code> 或 <code>forEntityName(String EntityName)</code> 进行DetachedCriteria 实例的创建。</p>
+<h4 id="2-Restrictions-工具类"><a href="#2-Restrictions-工具类" class="headerlink" title="2. Restrictions 工具类"></a>2. Restrictions 工具类</h4><p>Criterion 是 Criteria 的查询条件。Criteria 提供了 <code>add(Criterion criterion)</code> 方法来添加查询条件。</p>
+<p>Criterion 的实例可以通过 Restrictions 工具类来创建，Restrictions 提供了大量的静态方法来方法的创建 Criterion 查询条件</p>
+<p>Restrictions的常用方法</p>
+<p>方法名称                     | 描述<br>|                         –|–|<br>Restrictions.eq             | 等于<br>Restrictions.allEq          | 使用Map,Key/Valu进行多个等于的比对<br>Restrictions.gt             | 大于<br>Restrictions.ge             | 大于等于<br>Restrictions.lt             | 小于<br>Restrictions.le             | 小于等于<br>Restrictions.between        | 对应SQL的between<br>Restrictions.like           | 对应SQL的like<br>Restrictions.in             | 对应SQL的in<br>Restrictions.and            | and关系<br>Restrictions.or             | or关系<br>Restrictions.sqlRestriction | SQL限定查询</p>
+<h4 id="3-Order-工具类"><a href="#3-Order-工具类" class="headerlink" title="3. Order 工具类"></a>3. Order 工具类</h4><p>Order类的常用方法：</p>
+<p>方法名      | 称描述<br>|      –|–|<br>Order.asc  | 升序<br>Order.desc | 降序</p>
+<h4 id="4-Projections-工具类"><a href="#4-Projections-工具类" class="headerlink" title="4. Projections 工具类"></a>4. Projections 工具类</h4><p>Projections类的常用方法：</p>
+<p>方法名称                    | 描述<br>|                      –|–|<br>Projections.avg            | 求平均值<br>Projections.count          | 统计某属性的数量<br>Projections.countDistinct  | 统计某属性不同值的数量<br>Projections.groupProperty  | 指定某个属性为分组属性<br>Projections.max            | 求最大值<br>Projections.min            | 求最小值<br>Projections.projectionList | 创建一个ProjectionList对象<br>Projections.rowCount       | 查询结果集中的记录条数<br>Projections.sum            | 求某属性的合计</p>
+<h2 id="2-映射配置文件"><a href="#2-映射配置文件" class="headerlink" title="2. 映射配置文件"></a>2. 映射配置文件</h2><ol>
+<li>基于ORM思想实现实体类与数据表的映射</li>
+<li><p>OMR(Object Relation Mapping)</p>
+<h4 id="3-主键生成策略"><a href="#3-主键生成策略" class="headerlink" title="3. 主键生成策略"></a>3. 主键生成策略</h4></li>
+<li><p>increment</p>
+<p> 设置为<code>increment</code>时，Hibernate自己在维护主键的值。当插入新记录时，先从数据库中获取当前的主键的最大值，然后在最大值上加1，作为新的主键值</p>
+<p> 用其生成的主键对应的OID的类型可以是<code>long</code>，<code>short</code>，<code>int</code>及其包装类类型。此策略只能在没其他进程向同意张表中插入数据时才能使用，在高并发或集群下不能使用。</p>
+</li>
+<li><p>identity</p>
+<p> 此策略使用数据库自身增长来维护主键值，适用于MySQL、DB2、MS SQL Server。</p>
+<p> 此策略的主键值与数据插入的成功与否无关，即使最后事务回滚了，数据库中的主键字段的值也会加一。用此策略生成的主键对应的OID可以是<br><code>long</code>、<code>short</code>、<code>int</code>及其包装类类型。</p>
+</li>
+<li><p>sequence</p>
+<p> 此策略造数据库中创建一个序列（sequence），然后 Hibernate 通过该序列为主键字段赋值，适用于 Oracle、DB2 和 PostgreSQL。</p>
+<p> 用此策略生成的主键对应的OID可以是<br><code>long</code>、<code>short</code>、<code>int</code> 及其包装类类型。</p>
+</li>
+<li><p>native</p>
+<p> 由 Hibernate 根据所使用的数据库支持能力从 identity、sequence 生成策略中选择一种。</p>
+<p> 使用此策略可以根据不同的数据库采用不同的生成策略，如 Oracle 中使用 sequence，在 MySQL中使用 identity便于 Hibernate 应用在不同的数据库之间移植。</p>
+</li>
+<li><p>uuid</p>
+<p> 次策略采用了 UUID 算法来生成一个字符串类型的主键值，该值使用 IP 地址、JVM 的启动时间（精确到 1/4秒）、系统时间和一个计数器值（在当前的 JVM中唯一）经过计算产生，可以用于分布式的 Hibernate 应用中。</p>
+<p> 产生的标识符是一个 32 位长度16进制的数字字符串，该值保证了在同一时空全网唯一。</p>
+</li>
+<li><p>assigned</p>
+<p> 此策略用于手动填写主键，Hibernate不自动生成</p>
+</li>
+<li><p>foreign</p>
+<p> 使用另外一个相关联的对象的主键作为该对象主键，主要用于一对一关系中。</p>
+</li>
+</ol>
+<h2 id="3-Hibernate-注解"><a href="#3-Hibernate-注解" class="headerlink" title="3. Hibernate 注解"></a>3. Hibernate 注解</h2><h3 id="1-类级别注解"><a href="#1-类级别注解" class="headerlink" title="1. 类级别注解"></a>1. 类级别注解</h3><ol>
+<li><p><code>@Entity</code>    映射实体类</p>
+<p> <code>@Entity(name=&quot;tableName&quot;)</code> - 必须，注解将一个类声明为一个实体bean。</p>
+<p> 属性：name - 可选，对应数据库中的一个表。若表名与实体类名相同，则可以省略。</p>
+</li>
+<li><p><code>@Table</code>    映射数句库表</p>
+<p> <code>@Table(name=&quot;&quot;,catalog=&quot;&quot;,schema=&quot;&quot;)</code>  - 可选，通常和@Entity 配合使用，只能标注在实体的 class 定义处，表示实体对应的数据库表的信息。</p>
+<p> 属性：</p>
+<ul>
+<li>name - 可选，表示表的名称，默认地，表名和实体名称一致，只有在不一致的情况下才需要指定表名</li>
+<li>catalog - 可选，表示Catalog名称，默认为 Catalog(“”)。</li>
+<li>schema - 可选，表示 Schema 名称，默认为Schema(“”)。</li>
+</ul>
+</li>
+</ol>
+<h3 id="2-属性级别注解"><a href="#2-属性级别注解" class="headerlink" title="2. 属性级别注解"></a>2. 属性级别注解</h3><h4 id="1-与主键相关注解"><a href="#1-与主键相关注解" class="headerlink" title="1. 与主键相关注解"></a>1. 与主键相关注解</h4><ol>
+<li><p><code>@Id</code> - 必须，定义了映射到数据库表的主键的属性，一个实体只能有一个属性被映射为主键，置于 getXxxx() 前。</p>
+</li>
+<li><p><code>@GeneratedValue(strategy=GenerationType,generator=&quot;&quot;)</code> - 可选，用于定义主键生成策略。</p>
+<p> 属性：</p>
+<ul>
+<li><p><code>strategy</code> - 表示主键生成策略，取值有：</p>
+<ul>
+<li><code>GenerationType.AUTO</code> - 根据底层数据库自动选择（默认），若数据库支持自动增长类型，则为自动增长。</li>
+<li><code>GenerationType.INDENTITY</code> - 根据数据库的Identity字段生成，支持DB2、MySQL、MS、SQL Server、SyBase与HyperanoicSQL数据库的Identity类型主键。</li>
+<li><code>GenerationType.SEQUENCE</code> - 使用Sequence来决定主键的取值，适合Oracle、DB2等支持Sequence的数据库，一般结合@SequenceGenerator使用。</li>
+<li><code>GenerationType.TABLE</code>  - 使用指定表来决定主键取值，结合@TableGenerator使用。</li>
+</ul>
+</li>
+<li><p><code>generator</code> - 表示主键生成器的名称，这个属性通常和ORM框架相关 , 例如：<br>Hibernate 可以指定 uuid 等主键生成方式</p>
+</li>
+</ul>
+</li>
+<li><p><code>@SequenceGenerator</code> — 注解声明了一个数据库序列。</p>
+<p> 属性：</p>
+<ul>
+<li><code>name</code> - 表示该表主键生成策略名称，它被引用在<code>@GeneratedValue</code>中设置的<code>gernerator</code>值中。</li>
+<li><code>sequenceName</code> - 表示生成策略用到的数据库序列名称。</li>
+<li><code>initialValue</code> - 表示主键初始值，默认为0。</li>
+<li><code>allocationSize</code> - 每次主键值增加的大小，例如设置成1，则表示每次创建新记录后自动加1，默认为50。</li>
+</ul>
+</li>
+</ol>
+<h4 id="2-与非主键相关注解"><a href="#2-与非主键相关注解" class="headerlink" title="2.与非主键相关注解"></a>2.与非主键相关注解</h4><ol>
+<li><p><code>@Version</code> - 可以在实体bean中使用@Version注解,通过这种方式可添加对乐观锁定的支持</p>
+</li>
+<li><p><code>@Basic</code> - 用于声明属性的存取策略：</p>
+<ul>
+<li><code>@Basic(fetch=FetchType.EAGER)</code>  即时获取（默认）</li>
+<li><code>@Basic(fetch=FetchType.LAZY)</code>    延迟获取</li>
+</ul>
+</li>
+<li><p><code>@Temporal</code> - 用于定义映射到数据库的时间精度：</p>
+<ul>
+<li><code>@Temporal(TemporalType=DATE)</code>       日期</li>
+<li><code>@Temporal(TemporalType=TIME)</code>       时间</li>
+<li><code>@Temporal(TemporalType=TIMESTAMP)</code> 两者兼具</li>
+</ul>
+</li>
+<li><p><code>@Column</code> - 可将属性映射到列，使用该注解来覆盖默认值，<code>@Column</code>描述了数据库表中该字段的详细定义，这对于根据 JPA 注解生成数据库表结构的工具非常有作用。</p>
+<p> 属性：</p>
+<ul>
+<li><code>name</code> - 可选，表示数据库表中该字段的名称，默认情形属性名称一致。</li>
+<li><code>nullable</code> -可选，表示该字段是否允许为 null，默认为<code>true</code>。</li>
+<li><code>unique</code> - 可选，表示该字段是否是唯一标识，默认为 <code>false</code>。</li>
+<li><code>length</code> - 可选，表示该字段的大小，仅对 String 类型的字段有效，默认值255。</li>
+<li><code>insertable</code> -可选，表示在ORM框架执行插入操作时，该字段是否应出现INSETRT语句中，默认为 <code>true</code>。</li>
+<li><code>updateable</code> -可选，表示在ORM 框架执行更新操作时，该字段是否应该出现在UPDATE语句中，默认为 <code>true</code>。对于一经创建就不可以更改的字段，该属性非常有用，如对于 birthday 字段。</li>
+<li><code>columnDefinition</code> - 可选，表示该字段在数据库中的实际类型。通常ORM框架可以根据属性类型自动判断数据库中字段的类型，但是对于Date类型仍无法确定数据库中字段类型究竟是 DATE , TIME 还是 TIMESTAMP. 此外,String 的默认映射类型为VARCHAR, 如果要将 String 类型映射到特定数据库的 BLOB 或 TEXT字段类型，该属性非常有用。</li>
+</ul>
+</li>
+<li><p><code>@Transient</code> - 可选，表示该属性并非一个到数据库表的字段的映射，ORM框架将忽略该属性，如果一个属性并非数据库表的字段映射，就务必将其标示为<code>@Transient</code>，否则ORM 框架默认其注解为 <code>@Basic</code></p>
+</li>
+</ol>
+<h4 id="3-无注解属性的默认值"><a href="#3-无注解属性的默认值" class="headerlink" title="3. 无注解属性的默认值"></a>3. 无注解属性的默认值</h4><p>如果属性为单一类型,则映射为@Basic，</p>
+<p>否则,如果属性对应的类型定义了@Embeddable注解,则映射为@Embedded，</p>
+<p>否则,如果属性对应的类型实现了Serializable, 则属性被映射为@Basic并在一个列中保存该对象的serialized版本，</p>
+<p>否则,如果该属性的类型为java.sql.Clob或 java.sql.Blob,则作为@Lob并映射到适当的LobType.。</p>
+<h2 id="4-Hibernate-三种继承映射方式注解实现"><a href="#4-Hibernate-三种继承映射方式注解实现" class="headerlink" title="4. Hibernate 三种继承映射方式注解实现"></a>4. Hibernate 三种继承映射方式注解实现</h2><p>hibernate应用中，继承的用途或目的主要有两点：</p>
+<ul>
+<li><p>组件化：故明思义，把重复性的代码抽取成组件，以便重用和维护。hibernate应用中，一些重复的字段，重复的映射配置，就需要抽取成组件。</p>
+</li>
+<li><p>多态性：类的多态性是指下层业务所需一个父类对象，而上层业务根据所需的父类对象，传递一个子类对象。hibernate应用中，下层业务操作父类对象进行持久操作，如增删改查，上层业务则传递一个子类对象。</p>
+</li>
+</ul>
+<p>Hibernate 支持三种类型的继承形式</p>
+<ul>
+<li><code>SINGLE_TABLE</code>：将父类和及其子类存放在一张表中，并创建一个新的字段来判断对象的类型。</li>
+<li><code>TABLE_PER_CLASS</code>：为父类及其每一个子类各创建一个表，这些表是相互独立的。</li>
+<li><code>JOINED</code>：每个子类对应一张表，并与主类（父类）共享主表</li>
+</ul>
+<h3 id="1-SINGLE-TABLE"><a href="#1-SINGLE-TABLE" class="headerlink" title="1. SINGLE_TABLE"></a>1. SINGLE_TABLE</h3><p><img src="https://i.loli.net/2017/10/24/59ee9ecfaa3fe.png" alt="SINGLE_TABLE"></p>
+<p>使用 <code>SINGLE_TABLE</code> 需要在父类添加</p>
+<pre><code class="java">@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+</code></pre>
+<p>添加标识字段并为本类添加标识字段的值</p>
+<pre><code class="java">@DiscriminatorColumn(name = &quot;type&quot;,discriminatorType = DiscriminatorType.STRING)
+@DiscriminatorValue(&quot;Person&quot;)
+</code></pre>
+<p>然后在不同的子类中设置不同的标识值，在Student子类中设置标识值</p>
+<pre><code class="java">@DiscriminatorValue(&quot;Student&quot;)
+</code></pre>
+<p>在Teacher子类中设置标识值</p>
+<pre><code class="java">@DiscriminatorValue(&quot;Teacher&quot;)
+</code></pre>
+<h3 id="2-TABLE-PER-CLASS"><a href="#2-TABLE-PER-CLASS" class="headerlink" title="2. TABLE_PER_CLASS"></a>2. TABLE_PER_CLASS</h3><p><img src="https://i.loli.net/2017/10/24/59ee9ecfaf142.png" alt="TABLE_PER_CLASS"></p>
+<p>使用 <code>TABLE_PER_CLASS</code> 只需要在父类设置以下注解即可</p>
+<pre><code class="java">@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+</code></pre>
+<p>但是，注解的主键生成策略不能使用<code>GenerationType.IDENTITY</code>，可以使用<code>AUTO</code>或其它。</p>
+<h3 id="3-JOINED"><a href="#3-JOINED" class="headerlink" title="3. JOINED"></a>3. JOINED</h3><p><img src="https://i.loli.net/2017/10/24/59ee9ecfb1c0d.png" alt="joined"></p>
+<p>使用 <code>JOINED</code> 只需要在父类设置以下注解即可</p>
+<pre><code class="java">@Inheritance(strategy = InheritanceType.JOINED)
+</code></pre>
+<p>可以在子类中设置共享主键的名称</p>
+<pre><code class="java">@PrimaryKeyJoinColumn(name = &quot;共享主键的名称&quot;)
+</code></pre>
+<p>如不设置，默认的主键名称与父类一致。</p>
+<hr>
+<p>这是我学习时的笔记，当时踩了不少的坑。看完此篇，不知道有没有帮上你一点呢？</p>
+
+        
+                <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
+                    <p><strong>
+                         
+                            <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png"></a><br>本博客采用<a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可。
+                        </strong>
+                        <br>
+                        <strong>本文链接：</strong><a href="https://newkami.cn/2017/10/23/hibernate-note/">https://newkami.cn/2017/10/23/hibernate-note/</a>
+                    </p>
+                </blockquote>
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2017/10/27/spring-note/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2017/09/23/add-favicon/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/author.jpg" alt="FETE's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        rabbitshotel@gmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto: rabbitshotel@gmail.com" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2018/03/">三月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/12/">十二月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/11/">十一月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">2</span></a>
+            </li></ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/学习笔记/">学习笔记<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/技术教程/">技术教程<span class="sidebar_archives-count">5</span></a>
+            </li></ul>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/tags/index.html" title="标签云">
+                
+                    <i class="material-icons sidebar-material-icons">loyalty</i>
+                
+                标签云
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+        <li>
+            <a href="/timeline/index.html" title="时间轴">
+                
+                    <i class="material-icons sidebar-material-icons">timeline</i>
+                
+                时间轴
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material" class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            主题 - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+    <a href="https://github.com/viosey/hexo-theme-material/issues" target="_blank" class="sidebar-footer-text-a">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+        sidebar.feedback
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+    </a>
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/FETE_CH" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-twitter">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+        <a href="https://www.weibo.com/menghuanzox" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-weibo">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/FETE-CH" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+        <a href="https://www.jianshu.com/u/2b77d70f5e8f" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-zhihu">
+                <span class="visuallyhidden">Zhihu</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Bilibili -->
+    
+        <a href="https://space.bilibili.com/3191046" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-bilibili">
+                <span class="visuallyhidden">Bilibili</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Telegram -->
+    
+
+    <!-- V2EX -->
+    
+
+    <!-- Segmentfault -->
+    
+        <a href="https://segmentfault.com/u/fete" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-segmentfault">
+                <span class="visuallyhidden">Segmentfault</span>
+            </button><!--
+     --></a>
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;<span year=""></span>&nbsp;新世界的Kami
+            
+                <br>
+                
+                    生命不息，学习不止
+                
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?Bn9UzEm8RrBSxqyZB0zPjA==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 500);
+</script>
+
+
+
+
+
+
+
+    <!-- Busuanzi -->
+    <script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+
+    
+        <script>lsloader.load("hanabi","/js/hanabi-browser-bundle.js?Pki5+pzkluqu53g+ouMWpA==", true)</script>
+    
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+    
+        
+        
+        HanabiBrowser.start('pre code',true);
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    var copyrightNow = new Date().getFullYear();
+    var textContent = document.querySelector('span[year]')
+
+    copyrightSince = 2017;
+    if (copyrightSince === copyrightNow||copyrightSince === 0000) {
+        textContent.textContent = copyrightNow
+    } else {
+        textContent.textContent = copyrightSince + ' - ' + copyrightNow
+    }
+
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.6 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>

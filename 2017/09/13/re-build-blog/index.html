@@ -1,0 +1,1271 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.6 -->
+    <script>
+        window.materialVersion = "1.5.6"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0',
+            '1.5.2',
+            '1.5.5'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+    <link rel="dns-prefetch" href="https://busuanzi.ibruce.info">
+
+
+
+
+
+
+
+    <link rel="dns-prefetch" href="https://fonts.proxy.ustclug.org">
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            Re：从零开始的博客搭建 | 
+        
+        新世界的Kami
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.ico">
+    <link rel="icon" href="/img/logo.png">
+
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" itemprop="description" content="花了一个多星期，个人的博客总算是搭建完了，这算是这个博客第一篇正式的文章吧。
+看到同学有个人博客，心里痒痒的，想着也搞一个去，但是网上的博客都是在别人服务器上，感觉太被动，我不喜欢。就去百度了下建站的过程，好像…并不难的样子于是，开搞！
+期间踩了无数坑，百度和谷歌了无数次，软件装了又卸，卸了又装，连服务器系统都重装3次算是对的起标题的 “RE” 了。写这篇文章是打算记录下我搭建的过程，也算是个备忘录吧，个人的记性实在是不好，不知道什么时候就忘了">
+    <meta name="keywords" content=",Linux,Hexo,博客搭建,Github,Markdown">
+    <meta name="theme-color" content="#0097A7">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?NKhlKQkXw/c66TR5p4wO+w==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg.png);
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 500ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.proxy.ustclug.org/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="新世界的Kami">
+    <meta name="msapplication-starturl" content="https://newkami.cn/2017/09/13/re-build-blog/">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="新世界的Kami">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/logo.png">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="https://newkami.cn/2017/09/13/re-build-blog/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Re：从零开始的博客搭建 | 新世界的Kami">
+    <meta property="og:image" content="/img/logo.png">
+    <meta property="og:description" content="花了一个多星期，个人的博客总算是搭建完了，这算是这个博客第一篇正式的文章吧。
+看到同学有个人博客，心里痒痒的，想着也搞一个去，但是网上的博客都是在别人服务器上，感觉太被动，我不喜欢。就去百度了下建站的过程，好像…并不难的样子于是，开搞！
+期间踩了无数坑，百度和谷歌了无数次，软件装了又卸，卸了又装，连服务器系统都重装3次算是对的起标题的 “RE” 了。写这篇文章是打算记录下我搭建的过程，也算是个备忘录吧，个人的记性实在是不好，不知道什么时候就忘了">
+    <meta property="og:article:tag" content="Linux"> <meta property="og:article:tag" content="Hexo"> <meta property="og:article:tag" content="博客搭建"> <meta property="og:article:tag" content="Github"> <meta property="og:article:tag" content="Markdown"> 
+
+    
+        <meta property="article:published_time" content="Wed Sep 13 2017 14:02:06 GMT+0800">
+        <meta property="article:modified_time" content="Fri Dec 08 2017 14:50:31 GMT+0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="https://newkami.cn/2017/09/13/re-build-blog/index.html">
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "https://newkami.cn/2017/09/13/re-build-blog/index.html",
+    "headline": "Re：从零开始的博客搭建",
+    "datePublished": "Wed Sep 13 2017 14:02:06 GMT+0800",
+    "dateModified": "Fri Dec 08 2017 14:50:31 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "FETE",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/author.jpg"
+        },
+        "description": "感谢你停下匆忙的脚步,你可以随意浏览,希望你开心"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "新世界的Kami",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/logo.png"
+        }
+    },
+    "keywords": ",Linux,Hexo,博客搭建,Github,Markdown",
+    "description": "花了一个多星期，个人的博客总算是搭建完了，这算是这个博客第一篇正式的文章吧。
+看到同学有个人博客，心里痒痒的，想着也搞一个去，但是网上的博客都是在别人服务器上，感觉太被动，我不喜欢。就去百度了下建站的过程，好像…并不难的样子于是，开搞！
+期间踩了无数坑，百度和谷歌了无数次，软件装了又卸，卸了又装，连服务器系统都重装3次算是对的起标题的 “RE” 了。写这篇文章是打算记录下我搭建的过程，也算是个备忘录吧，个人的记性实在是不好，不知道什么时候就忘了",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span id="MD-burger-id" class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn" class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#搭建的事前准备"><span class="post-toc-text">搭建的事前准备</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#购买域名"><span class="post-toc-text">购买域名</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#购买服务器空间"><span class="post-toc-text">购买服务器空间</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#正式开始"><span class="post-toc-text">正式开始</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#服务器设置"><span class="post-toc-text">服务器设置</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#远程登录服务器空间"><span class="post-toc-text">远程登录服务器空间</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#创建新用户"><span class="post-toc-text">创建新用户</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Hexo环境配置"><span class="post-toc-text">Hexo环境配置</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Hexo安装及初始化"><span class="post-toc-text">Hexo安装及初始化</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Hexo-博客预览"><span class="post-toc-text">Hexo 博客预览</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#写第一篇博文"><span class="post-toc-text">写第一篇博文</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#配置Github"><span class="post-toc-text">配置Github</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#部署到Github"><span class="post-toc-text">部署到Github</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#域名绑定"><span class="post-toc-text">域名绑定</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#域名解析"><span class="post-toc-text">域名解析</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#添加CANME"><span class="post-toc-text">添加CANME</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#博客性能优化"><span class="post-toc-text">博客性能优化</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#写在后面"><span class="post-toc-text">写在后面</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#参考资料"><span class="post-toc-text">参考资料</span></a></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 2 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                Re：从零开始的博客搭建
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/author.jpg" width="44px" height="44px" alt="Author Avatar">
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>FETE</strong>
+        <span>9月 13, 2017</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/Github/">Github</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Hexo/">Hexo</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Linux/">Linux</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Markdown/">Markdown</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/博客搭建/">博客搭建</a>
+    </li></ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+        
+            <!-- Busuanzi Views -->
+            <a class="post_share-link" href="#">
+                <li class="mdl-menu__item">
+                    <span id="busuanzi_container_page_pv">
+                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
+                    </span>
+                </li>
+            </a>
+        
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Re：从零开始的博客搭建&url=https://newkami.cn/2017/09/13/re-build-blog/index.html&pic=https://newkami.cn/img/favicon.ico&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Re：从零开始的博客搭建&url=https://newkami.cn/2017/09/13/re-build-blog/index.html&via=FETE" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://newkami.cn/2017/09/13/re-build-blog/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://newkami.cn/2017/09/13/re-build-blog/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <p>花了一个多星期，个人的博客总算是搭建完了，这算是这个博客第一篇正式的文章吧。</p>
+<p>看到同学有个人博客，心里痒痒的，想着也搞一个去，但是网上的博客都是在别人服务器上，感觉太被动，我不喜欢。就去百度了下建站的过程，好像…并不难的样子<img src="https://i.loli.net/2017/09/15/59bbc012dd836.png" alt="">于是，开搞！</p>
+<p>期间踩了无数坑，百度和谷歌了无数次，软件装了又卸，卸了又装，连服务器系统都重装3次<img src="https://i.loli.net/2017/09/15/59bbc1e2779e5.jpg" alt="">算是对的起标题的 “RE” 了。写这篇文章是打算记录下我搭建的过程，也算是个备忘录吧，个人的记性实在是不好，不知道什么时候就忘了<img src="https://i.loli.net/2017/09/15/59bbc012dd836.png" alt=""></p>
+<a id="more"></a>
+<h3 id="搭建的事前准备"><a href="#搭建的事前准备" class="headerlink" title="搭建的事前准备"></a>搭建的事前准备</h3><ol>
+<li>一个独立域名</li>
+<li>一台linux计算机，不管是自己的还是别人的（服务器空间）<h4 id="购买域名"><a href="#购买域名" class="headerlink" title="购买域名"></a>购买域名</h4>购买域名的目的是人别人更好的记住你的博客，虽然Hexo静态博客不绑定自己的域名也可以通过Github分配给你的永久连接访问,个人建议还是买一个独立域名，说不定别人就被你与(diao)众(zha)不(tian)同的域名吸引了呢~</li>
+</ol>
+<p>域名首选以.com为后缀的，国际通用，简单好用，如何购买请自行百度或谷歌“域名购买”或“域名注册”，网上有非常多非常详细的教程，这里就不叙述了。</p>
+<h4 id="购买服务器空间"><a href="#购买服务器空间" class="headerlink" title="购买服务器空间"></a>购买服务器空间</h4><p>由于Hexo博客是部署在Github的仓库上的，可以不使用服务器，但是我这里的小水管基本等同于没有，更重要的在我疯狂百度时领到了一张tx的代金券，so…就买了tx的云服务器，还送了个一年的域名<img src="https://i.loli.net/2017/09/15/59bbc012dd836.png" alt=""></p>
+<p>所以，不想增加开销的可以跳过这步，使用自己的电脑搭建，但是需要用到Node.js，所以</p>
+<font color="#FF3C63" size="6" face="黑体"><br>不要使用Windows！！！<br><br>不要使用Windows！！！<br><br>不要使用Windows！！！<br></font>
+
+<p>Windows版的Node.js根本就是残疾版，别问我什么知道…<img src="https://i.loli.net/2017/09/15/59bbc1e2779e5.jpg" alt=""></p>
+<p>回归正题，服务器空间有一般有以下几种</p>
+<ul>
+<li>虚拟主机</li>
+<li>VPS</li>
+<li>云主机</li>
+<li>独立服务器</li>
+</ul>
+<p>想要了解各个的优缺点及差异，可以看看下面的介绍</p>
+<p><a href="https://www.zhihu.com/question/31909406" target="_blank" rel="noopener">虚拟主机、VPS和云服务器的特点与差异性？</a> ———— 知乎</p>
+<p><a href="http://www.enkj.com/idcnews/Article/20140916/6110" target="_blank" rel="noopener">全面解析：虚拟主机、独立服务器、VPS及云主机</a> ———— 亿恩IDC资讯</p>
+<p>我买的就是属于云主机，多亏是云主机，让我省了不少事。</p>
+<p>还有，构架在大陆的且用于网站服务器的空间是一定要备案的，不想麻烦的话可以购买香港或国外的空间。但是这里我们并不是用于网站的服务器作用，只是将markdown解析成静态html页面，然后再部署到github仓库上，所以并不需要备案。</p>
+<p>服务器空间的选择实在是太多了，个人也没什么推荐，只知道亚马逊AWS可以免费使用一年，其他的可自行百度或谷歌。</p>
+<h3 id="正式开始"><a href="#正式开始" class="headerlink" title="正式开始"></a>正式开始</h3><p>接下来就正开始我们的Hexo博客搭建。</p>
+<h4 id="服务器设置"><a href="#服务器设置" class="headerlink" title="服务器设置"></a>服务器设置</h4><p>有了服务器之后需要对服务器进行一系列设置。</p>
+<p>首先，重装系统，一个合适的系统会让你的操作更加得心应手。</p>
+<p><img src="https://i.loli.net/2017/09/16/59bc78e293aba.png" alt=""></p>
+<p>选择合适自己的操作系统，我选了Debian 9，因为习惯了了Ubuntu，<code>apt-get</code> 命令实在是太方便了。重装系统后，root的密码是不变的，这点谨记。</p>
+<p>设置安全组，让必要的端口暴露出来。tx的云主机为了安全,设置了安全组，只有在安全组之内的端口才能够使用。</p>
+<p><img src="https://i.loli.net/2017/09/16/59bc7c8e1bc9e.png" alt=""></p>
+<p>关于更多安全组的信息，请参见 <a href="https://www.qcloud.com/document/product/416/7596" target="_blank" rel="noopener">帮助与文档</a> ———— 腾讯云</p>
+<h4 id="远程登录服务器空间"><a href="#远程登录服务器空间" class="headerlink" title="远程登录服务器空间"></a>远程登录服务器空间</h4><p>一般使用SSH远程登录到服务器，Winows下常用的远程登录软件有PuTTY和Xshell，前者为自由软件，后者为商业软件，可以根据自己的喜好选择，这里选用Xshell作为介绍，PuTTY也是大同小异。</p>
+<p>打开Xshell,新建会话</p>
+<p><img src="https://i.loli.net/2017/09/16/59bd46eda7e04.png" alt=""></p>
+<p>确定之后就可以使用可以空间商给你提供的账号和密码登录了。</p>
+<h4 id="创建新用户"><a href="#创建新用户" class="headerlink" title="创建新用户"></a>创建新用户</h4><p>一般来说，不建议使用root用户来搭建Hexo博客，很有可能会发现不可预料的错误，甚至是只有你才会发生的问题，别人都没有，百度和谷歌都找不到解决办法。为了避免这些问题，我们需要一个不是root用户但是有管理员权限的用户。</p>
+<p>在root用户下，新建git用户(用户名可以自己取，但是要好记)</p>
+<pre><code class="bash">adduser git
+</code></pre>
+<p>修改系统文件权限</p>
+<pre><code class="bash">chmod 740 /etc/sudoers
+</code></pre>
+<p>使用Vim编辑器打开</p>
+<pre><code class="bash">vim /etc/sudoers
+</code></pre>
+<p>找到</p>
+<pre><code class="bash"># User privilege specification
+root    ALL=(ALL:ALL) ALL
+</code></pre>
+<p>在这下面添加一行</p>
+<pre><code class="bash">git ALL=(ALL) ALL
+</code></pre>
+<p>保存后退出，更改回原来的权限</p>
+<pre><code class="bash">chmod 400 /etc/sudoers
+</code></pre>
+<p>然后为你的新用户设置密码</p>
+<pre><code class="bash">passwd git
+</code></pre>
+<p>好了，一个有权限的用户就新建完成了。</p>
+<h4 id="Hexo环境配置"><a href="#Hexo环境配置" class="headerlink" title="Hexo环境配置"></a>Hexo环境配置</h4><p>切换git用户，后面的操作都在git下进行，遇到需要权限的只需要在前面加上 <code>sudo</code> 就行</p>
+<pre><code>su git
+</code></pre><p>安装 Node.js 8</p>
+<pre><code class="bash">curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+sudo apt-get install -y nodejs
+</code></pre>
+<p>安装 Git</p>
+<pre><code class="bash">sudo apt-get install git-all
+</code></pre>
+<h4 id="Hexo安装及初始化"><a href="#Hexo安装及初始化" class="headerlink" title="Hexo安装及初始化"></a>Hexo安装及初始化</h4><p>安装完上面的必要软件后就可以安装Hexo了。使用npm命令安装Hexo。</p>
+<pre><code class="bash">sudo npm install -g hexo-cli
+</code></pre>
+<p>如果出现报错，请尝试这些方法：<a href="https://github.com/hexojs/hexo/issues/2505" target="_blank" rel="noopener">https://github.com/hexojs/hexo/issues/2505</a></p>
+<p>选择初始化Hexo的目录，一般目录都会选择自己的家目录下。进入家目录</p>
+<pre><code class="bash">cd ~
+</code></pre>
+<p>初始化Hexo，Hexo将会在指定目录下新建所需要的文件，<code>&lt;folder&gt;</code> 即目录名。</p>
+<pre><code class="bash">hexo init &lt;folder&gt;
+cd &lt;folder&gt;
+sudo npm install
+</code></pre>
+<p>一般都会用 blog 作为目录名，所以</p>
+<pre><code class="bash">hexo init blog
+cd blog
+sudo npm install
+</code></pre>
+<p>新建完成后，blog的目录结构如下</p>
+<pre><code>.
+├── _config.yml
+├── package.json
+├── scaffolds
+├── source
+|   ├── _drafts
+|   └── _posts
+└── themes
+</code></pre><p>如果你的目录结构和上面示例的一样，说明正确初始化了，如果发现目录或文件不全，说明Hexo没正确初始化，请删除整个blog目录重新初始化。</p>
+<h4 id="Hexo-博客预览"><a href="#Hexo-博客预览" class="headerlink" title="Hexo 博客预览"></a>Hexo 博客预览</h4><p>要想本地预览Hexo博客，必须安装本地服务器。Hexo 3.0 把服务器独立成了个别模块，必须先安装 <code>hexo-server</code> 才能使用。</p>
+<pre><code class="bash">cd blog
+npm install hexo-server --save
+</code></pre>
+<p><strong>注意，不加 <code>--save</code> 会安装失败！</strong></p>
+<p>启动Hexo本地服务</p>
+<pre><code class="bash">hexo server
+</code></pre>
+<p>如果发现不能启动服务，请返回上面仔细检查安全组内是否有<code>4000</code>端口，或者检查端口是否打开了，或者检查端口是否被其他程序占用！</p>
+<p>启动服务之后可以使用 <a href="http://localhost:4000" target="_blank" rel="noopener">http://localhost:4000</a> 访问你的Hexo静态博客了。由于我们是在服务器空间上，所以把 <code>localhost</code> 换成 <code>你空间的公网IP</code> 就可以了。例如：<a href="http://192.168.0.1:4000" target="_blank" rel="noopener">http://192.168.0.1:4000</a></p>
+<p>怎么样？是不是很激动？有种<del>欣(da)喜(le)若(ji)狂(xue)</del>的感觉？别急，还没完成呢<img src="https://i.loli.net/2017/09/15/59bbc012dd836.png" alt=""></p>
+<h4 id="写第一篇博文"><a href="#写第一篇博文" class="headerlink" title="写第一篇博文"></a>写第一篇博文</h4><p>博客已经成型，来写第一篇自己的博文吧。使用下面的命令创建新的文章，这会生成一个Markdown文件，默认在 <code>blog/sources/_posts</code> 目录下</p>
+<pre><code class="bash">hexo new &quot;你好，Hexo&quot;
+</code></pre>
+<p>使用Vim编辑它</p>
+<pre><code class="bash">vim /sources/_posts/你好，Hexo.md
+</code></pre>
+<p>然后使用下面的命令生成静态文件</p>
+<pre><code class="bash">hexo generate
+</code></pre>
+<p>当然，是可以简写的</p>
+<pre><code class="bash">hexo g
+</code></pre>
+<p>启动服务</p>
+<pre><code class="bash">hexo server
+</code></pre>
+<p>在浏览器输入地址，就可以看到自己写的文章啦~</p>
+<h4 id="配置Github"><a href="#配置Github" class="headerlink" title="配置Github"></a>配置Github</h4><p>接下来，要将Hexo部署到Guthub仓库上，让别人也可以访问你的博客，成为一个真正的网站。首先，需要进行配置。</p>
+<ol>
+<li><p>注册Github账号</p>
+<p> 打开<a href="https://github.com/" target="_blank" rel="noopener">Github</a>,申请一个账号，有账号的就可以跳过啦~</p>
+</li>
+<li><p>新建仓库</p>
+<p> 注册完成后登录Github，点击右上角的”＋”，d点击”New repository”</p>
+<p> <img src="https://i.loli.net/2017/09/19/59c0d32b556be.png" alt=""></p>
+<p> 进去后，填写格式如下，把 <code>yourusername</code> 替换成的你用户名。</p>
+<p> <strong>注意：格式一定是要是 <code>yourusername.github.io</code> 不然后面的步骤会报错！！！</strong></p>
+<p> <img src="https://i.loli.net/2017/09/19/59c0d6189e784.png" alt=""></p>
+</li>
+<li><p>告诉Git你是谁</p>
+<p> 要想部署到Github，Git必须先知道你是谁。</p>
+<pre><code class="bash"> git config --global user.name&quot;你的Github用户名&quot; 
+ git config --global user.email&quot;你注册Github时填的邮箱&quot;
+</code></pre>
+</li>
+<li><p>设置部署路径</p>
+<p> 进入blog目录，编辑配置文件<code>_config.yml</code></p>
+<pre><code class="bash"> cd blog
+ vim _config.yml
+</code></pre>
+<p> 拉到最后，找到 <code>deploy:</code> ，修改如下，把 <code>youruesername</code> 替换成你的Githu用户名</p>
+<pre><code class="bash"> deploy: 
+     type: git
+     repo: https://github.com/yourusername/yourusername.github.io.git
+     branch: master
+</code></pre>
+<p> <strong>注意：配置文件中的内容，”:”后面都有个空格，不能省略，不然会报错！！！</strong></p>
+</li>
+</ol>
+<h4 id="部署到Github"><a href="#部署到Github" class="headerlink" title="部署到Github"></a>部署到Github</h4><p>开始正式将Hexo部署到Github，完成这一步，一个真正的博客网站就搭建好了。</p>
+<p>清除缓存文件和已生成的静态文件</p>
+<pre><code class="bash">hexo clean
+</code></pre>
+<p>生成静态文件</p>
+<pre><code class="bash">hexo generate
+</code></pre>
+<p>部署到Github</p>
+<pre><code class="bash">hexo deploy
+</code></pre>
+<p>合并简写</p>
+<pre><code class="bash">hexo d -g
+</code></pre>
+<p>或者</p>
+<pre><code class="bash">hexo g -d
+</code></pre>
+<p>这两个命令都是可以的。然后会提示你输入你的Github账号和密码，输入后没有任何报错，就证明部署好了。接下来在浏览器输入Github给你供的永久连接<a href="http://yourusername.github.io" target="_blank" rel="noopener">http://yourusername.github.io</a>就能进入你的博客啦~~这个连接除非Github服务器出问题了，不然是永久有效的。</p>
+<p>不容易啊！快要泪流满面的对不对？我当初建好的时候可是大叫了出来，旁边的人看我眼神都不对了(玛德，zz！)<img src="https://i.loli.net/2017/09/15/59bbc1e2779e5.jpg" alt=""></p>
+<h3 id="域名绑定"><a href="#域名绑定" class="headerlink" title="域名绑定"></a>域名绑定</h3><p>虽然可以通过上面的永久链接访问你的博客，但是这一点都不个性化，也很繁琐，让你的博客有个自己独立的域名，是十分必要的。</p>
+<h4 id="域名解析"><a href="#域名解析" class="headerlink" title="域名解析"></a>域名解析</h4><p>进入你购买的域名的域名管理，选择解析</p>
+<p><img src="https://i.loli.net/2017/09/19/59c110a7c36d0.png" alt=""></p>
+<p>然后点击”添加记录”，会有提示</p>
+<p><img src="https://i.loli.net/2017/09/19/59c111a9089b6.png" alt=""></p>
+<p>这里要说下，这里记录类型有人填”A”,也有人填”CNAME”。A类型就是填你的永久链接指向的IP地址，CANME类型就是直接填你的永久链接。但是，<em>Github分配给你的IP地址有可能会改变，但是链接是不会变！</em>个人建议还是填CNAME类型。这里就把两种都叙述下。</p>
+<ol>
+<li><p>A 类型</p>
+<p> 使用 <code>ping</code> 命令获得Github分配给你的ip地址</p>
+<pre><code class="bash"> ping yourusername.github.io
+</code></pre>
+<p> 例如：</p>
+<p> <img src="https://i.loli.net/2017/09/19/59c11486051d0.png" alt=""></p>
+<p> 我这里获得的ip就是 <code>151.101.77.147</code> </p>
+<p> 添加两条记录，一条主机类型为”@”，一条主机类型为”www”</p>
+<p> <img src="https://i.loli.net/2017/09/19/59c1161dab7d0.png" alt=""></p>
+<p> <img src="https://i.loli.net/2017/09/19/59c1161dac9f2.png" alt=""></p>
+</li>
+<li><p>CNAME 类型</p>
+<p> 直接添加两条记录，同样也是一条主机类型为”@”，一条主机类型为”www”</p>
+<p> <img src="https://i.loli.net/2017/09/19/59c116f609bcd.png" alt=""></p>
+<p> 好了，这样记录就添加完成。</p>
+<p> 然后修改DNS服务器，将DNS1，DNS2分别修改为</p>
+<pre><code> f1g1ns1.dnspod.net
+ f1g1ns2.dnspod.net
+</code></pre><p> 域名解析就完成了，解析的域名会在10分钟甚至更长的时间内生效，请稍安勿躁。在等待的时候可先进行下面的操作。</p>
+</li>
+</ol>
+<h4 id="添加CANME"><a href="#添加CANME" class="headerlink" title="添加CANME"></a>添加CANME</h4><p>如果，你的域名解析完成，这时候你在浏览器输入你的域名想看看自己的博客，然而你会发现</p>
+<p><img src="https://i.loli.net/2017/09/19/59c11a8d872cc.png" alt=""></p>
+<p>并不能进入自己的博客。这时候还需要进行一步操作。</p>
+<p>在<code>blog/source</code>目录下,新建一个文件<code>CNAME</code>文件，<em>注意：文件名大写，没有后缀！</em></p>
+<pre><code class="bash">cd blog/source/
+vim CNAME
+</code></pre>
+<p>内容就是你的域名，<em>注意：不用加 <code>www</code> ！</em></p>
+<p>例如，我的域名</p>
+<pre><code>newkami.cn
+</code></pre><p>然后更新到Gitub</p>
+<pre><code class="bash">hexo clean
+hexo g -d
+</code></pre>
+<p>如果你的域名解析正常，就可以看的你的博客啦~如果显示无法访问此网站，则是你的域名还没解析完成，请耐心等待，如果显示的是Github 404界面，则是你的CNAME或其他的问题，请仔细检查上面的步骤！</p>
+<h3 id="博客性能优化"><a href="#博客性能优化" class="headerlink" title="博客性能优化"></a>博客性能优化</h3><p>作为一个强迫症患者，看着自家的网站用着http协议被浏览器标识为”不安全”，简直不能再不爽了。想着我也去搞了个SSL证书，让自己的博客支持HTTPS协议。突然发现tx竟然能免费申请SSL证书！大喜！</p>
+<p><img src="https://i.loli.net/2017/09/20/59c2621570fb8.png" alt=""></p>
+<p>经过4-5天漫长的等待，证书终于审核好了</p>
+<p><img src="https://i.loli.net/2017/09/20/59c2630fda4e9.png" alt=""></p>
+<p>然后我就急忙着去配置了，结果提示</p>
+<p><img src="https://i.loli.net/2017/09/20/59c263903ff25.png" alt=""></p>
+<p>诶？咋就这么麻烦呢?!要接入那咱就接入吧，心想着，结果，来了这么一出</p>
+<p><img src="https://i.loli.net/2017/09/20/59c264af8cbe6.png" alt=""></p>
+<p>哇，tx你这是在玩我吧<img src="https://i.loli.net/2017/09/15/59bbc1e2779e5.jpg" alt=""></p>
+<p>奈何Github仓库并不能备案，这条路也就彻底断了。在我快把百度和谷歌查烂的时候，发现了Cloudflare。</p>
+<blockquote>
+<p>Cloudflare以向客户提供网站安全管理、性能优化及相关的技术支持为主要业务。通过基于反向代理的内容传递网络(ContentDeliveryNetwork,CDN)及分布式域名解析服务(DistributedDomainNameServer)，Cloudflare可以帮助受保护站点抵御包括拒绝服务攻击(DenialofService)在内的大多数网络攻击，确保该网站长期在线，同时提升网站的性能、访问速度以改善访客体验。</p>
+</blockquote>
+<p>以上摘自百度百科。</p>
+<p>于是，我就着手把域名接入了Cloudflare。</p>
+<ol>
+<li><p>注册Cloudflare</p>
+<p> 进入<a href="https://www.cloudflare.com" target="_blank" rel="noopener">Cloudflare</a>，注册一个账号</p>
+</li>
+<li><p>解析域名</p>
+<p> 注册完成后，填写你的域名，让Cloudflare去解析</p>
+</li>
+<li><p>跟改DNS服务器</p>
+<p> 然后，Cloudflare会要求你修改DNS，让你的网站的请求流至Cloudflare。进入你的域名管理，把DNS服务器修改成Cloudflare提供的DNS，当看到</p>
+<p> <img src="https://i.loli.net/2017/09/20/59c26c915b18c.png" alt=""></p>
+<p> 你的域名就成功接入Cloudflare了。</p>
+</li>
+<li><p>开启https<br> 在上面的功能区里，选择”加密”</p>
+<p> <img src="https://i.loli.net/2017/09/20/59c26d8fb3c30.png" alt=""></p>
+<p> 将”总是使用HTTPS”设为开启</p>
+<p> <img src="https://i.loli.net/2017/09/20/59c26dcddad11.png" alt=""></p>
+<p> 至此，你的网站就成功开启了https了，进入你的网站浏览器是这样显示的</p>
+<p> <img src="https://i.loli.net/2017/09/20/59c26eb593aae.png" alt=""></p>
+<p> 怎么样？看见有个小绿锁是不是有种安心的感觉呢？</p>
+</li>
+</ol>
+<h3 id="写在后面"><a href="#写在后面" class="headerlink" title="写在后面"></a>写在后面</h3><p>从开始写到现在，过了好几天了，期间因为其他的事，写写停停，总算写完了。如果这篇文章哪怕有帮到你一点点，也算有意义了。</p>
+<p><strong>第一次写教程，如有错误，请斧正！</strong></p>
+<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><p><a href="https://nodejs.org/en/download/package-manager/" target="_blank" rel="noopener">通过包管理器安装Node.js</a></p>
+<p><a href="https://git-scm.com/book/en/v2/Getting-Started-Installing-Git" target="_blank" rel="noopener">入门 - 安装Git</a></p>
+<p><a href="https://hexo.io/zh-cn/docs/index.html" target="_blank" rel="noopener">Hexo文档</a></p>
+<p><a href="https://segmentfault.com/a/1190000005624504#articleHeader9" target="_blank" rel="noopener">博客从WordPress迁移到Hexo</a></p>
+<hr>
+<p><strong>欢迎转载，转载请注明出处：<a href="https://newkami.cn/2017/09/13/re-build-blog/">https://newkami.cn/2017/09/13/re-build-blog/</a></strong></p>
+
+        
+                <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
+                    <p><strong>
+                         
+                            <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png"></a><br>本博客采用<a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可。
+                        </strong>
+                        <br>
+                        <strong>本文链接：</strong><a href="https://newkami.cn/2017/09/13/re-build-blog/">https://newkami.cn/2017/09/13/re-build-blog/</a>
+                    </p>
+                </blockquote>
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2017/09/23/add-favicon/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/author.jpg" alt="FETE's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        rabbitshotel@gmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto: rabbitshotel@gmail.com" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2018/03/">三月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/12/">十二月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/11/">十一月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">2</span></a>
+            </li></ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/学习笔记/">学习笔记<span class="sidebar_archives-count">4</span></a></li><li><a class="sidebar_archives-link" href="/categories/技术教程/">技术教程<span class="sidebar_archives-count">5</span></a>
+            </li></ul>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/tags/index.html" title="标签云">
+                
+                    <i class="material-icons sidebar-material-icons">loyalty</i>
+                
+                标签云
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+        <li>
+            <a href="/timeline/index.html" title="时间轴">
+                
+                    <i class="material-icons sidebar-material-icons">timeline</i>
+                
+                时间轴
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material" class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            主题 - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+    <a href="https://github.com/viosey/hexo-theme-material/issues" target="_blank" class="sidebar-footer-text-a">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+        sidebar.feedback
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+    </a>
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/FETE_CH" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-twitter">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+        <a href="https://www.weibo.com/menghuanzox" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-weibo">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/FETE-CH" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+        <a href="https://www.jianshu.com/u/2b77d70f5e8f" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-zhihu">
+                <span class="visuallyhidden">Zhihu</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Bilibili -->
+    
+        <a href="https://space.bilibili.com/3191046" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-bilibili">
+                <span class="visuallyhidden">Bilibili</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Telegram -->
+    
+
+    <!-- V2EX -->
+    
+
+    <!-- Segmentfault -->
+    
+        <a href="https://segmentfault.com/u/fete" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-segmentfault">
+                <span class="visuallyhidden">Segmentfault</span>
+            </button><!--
+     --></a>
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;<span year=""></span>&nbsp;新世界的Kami
+            
+                <br>
+                
+                    生命不息，学习不止
+                
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?Bn9UzEm8RrBSxqyZB0zPjA==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 500);
+</script>
+
+
+
+
+
+
+
+    <!-- Busuanzi -->
+    <script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+
+    
+        <script>lsloader.load("hanabi","/js/hanabi-browser-bundle.js?Pki5+pzkluqu53g+ouMWpA==", true)</script>
+    
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+    
+        
+        
+        HanabiBrowser.start('pre code',true);
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    var copyrightNow = new Date().getFullYear();
+    var textContent = document.querySelector('span[year]')
+
+    copyrightSince = 2017;
+    if (copyrightSince === copyrightNow||copyrightSince === 0000) {
+        textContent.textContent = copyrightNow
+    } else {
+        textContent.textContent = copyrightSince + ' - ' + copyrightNow
+    }
+
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.6 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
