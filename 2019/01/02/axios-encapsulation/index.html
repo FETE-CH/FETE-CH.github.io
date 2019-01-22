@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+<html style="display: none;" lang="zh">
+    <head><meta name="generator" content="Hexo 3.8.0">
+    <meta charset="utf-8">
+    <!--
+        © Material Theme
+        https://github.com/viosey/hexo-theme-material
+        Version: 1.5.6 -->
+    <script>
+        window.materialVersion = "1.5.6"
+        // Delete localstorage with these tags
+        window.oldVersion = [
+            'codestartv1',
+            '1.3.4',
+            '1.4.0',
+            '1.4.0b1',
+            '1.5.0',
+            '1.5.2',
+            '1.5.5'
+        ]
+    </script>
+
+    <!-- dns prefetch -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+
+
+
+    <link rel="dns-prefetch" href="https://busuanzi.ibruce.info">
+
+
+
+
+
+
+
+    <link rel="dns-prefetch" href="https://fonts.proxy.ustclug.org">
+
+
+
+
+
+    <!-- Meta & Info -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta name="renderer" content="webkit">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+    <!-- Title -->
+    
+    <title>
+        
+            Axios 实用封装 | 
+        
+        新世界的Kami
+    </title>
+
+    <!-- Favicons -->
+    <link rel="icon shortcut" type="image/ico" href="/img/favicon.ico">
+    <link rel="icon" href="/img/logo.png">
+
+    <meta name="format-detection" content="telephone=no">
+    <meta name="description" itemprop="description" content="Axios 实用封装Axios 在 vue 官方推荐后被越来越多的人使用，但是不得不说在项目直接使用 axios 实在是繁琐，每次都要写一堆的配置，而且将配置写在业务代码中十分地不雅，一般在项目中使用的时候都会将其再次封装，以便更好的使用。但是在网上找了一圈，都没发现让我满意的方案，不是不优雅，就是根本不实用。于是我自己实现了个简单但是非常实用的封装。">
+    <meta name="keywords" content=",前端,JavaScript,AJAX,axios,webpack">
+    <meta name="theme-color" content="#0097A7">
+
+    <!-- Disable Fucking Bloody Baidu Tranformation -->
+    <meta http-equiv="Cache-Control" content="no-transform">
+    <meta http-equiv="Cache-Control" content="no-siteapp">
+
+    <!--[if lte IE 9]>
+        <link rel="stylesheet" href="/css/ie-blocker.css">
+
+        
+            <script src="/js/ie-blocker.zhCN.js"></script>
+        
+    <![endif]-->
+
+    <!-- Import lsloader -->
+    <script>(function(){window.lsloader={jsRunSequence:[],jsnamemap:{},cssnamemap:{}};lsloader.removeLS=function(a){try{localStorage.removeItem(a)}catch(b){}};lsloader.setLS=function(a,c){try{localStorage.setItem(a,c)}catch(b){}};lsloader.getLS=function(a){var c="";try{c=localStorage.getItem(a)}catch(b){c=""}return c};versionString="/*"+(window.materialVersion||"unknownVersion")+"*/";lsloader.clean=function(){try{var b=[];for(var a=0;a<localStorage.length;a++){b.push(localStorage.key(a))}b.forEach(function(e){var f=lsloader.getLS(e);if(window.oldVersion){var d=window.oldVersion.reduce(function(g,h){return g||f.indexOf("/*"+h+"*/")!==-1},false);if(d){lsloader.removeLS(e)}}})}catch(c){}};lsloader.clean();lsloader.load=function(f,a,b,d){if(typeof b==="boolean"){d=b;b=undefined}d=d||false;b=b||function(){};var e;e=this.getLS(f);if(e&&e.indexOf(versionString)===-1){this.removeLS(f);this.requestResource(f,a,b,d);return}if(e){var c=e.split(versionString)[0];if(c!=a){console.log("reload:"+a);this.removeLS(f);this.requestResource(f,a,b,d);return}e=e.split(versionString)[1];if(d){this.jsRunSequence.push({name:f,code:e});this.runjs(a,f,e)}else{document.getElementById(f).appendChild(document.createTextNode(e));b()}}else{this.requestResource(f,a,b,d)}};lsloader.requestResource=function(b,e,a,c){var d=this;if(c){this.iojs(e,b,function(h,f,g){d.setLS(f,h+versionString+g);d.runjs(h,f,g)})}else{this.iocss(e,b,function(f){document.getElementById(b).appendChild(document.createTextNode(f));d.setLS(b,e+versionString+f)},a)}};lsloader.iojs=function(d,b,g){var a=this;a.jsRunSequence.push({name:b,code:""});try{var f=new XMLHttpRequest();f.open("get",d,true);f.onreadystatechange=function(){if(f.readyState==4){if((f.status>=200&&f.status<300)||f.status==304){if(f.response!=""){g(d,b,f.response);return}}a.jsfallback(d,b)}};f.send(null)}catch(c){a.jsfallback(d,b)}};lsloader.iocss=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.iofonts=function(f,c,h,a){var b=this;try{var g=new XMLHttpRequest();g.open("get",f,true);g.onreadystatechange=function(){if(g.readyState==4){if((g.status>=200&&g.status<300)||g.status==304){if(g.response!=""){h(g.response);a();return}}b.cssfallback(f,c,a)}};g.send(null)}catch(d){b.cssfallback(f,c,a)}};lsloader.runjs=function(f,c,e){if(!!c&&!!e){for(var b in this.jsRunSequence){if(this.jsRunSequence[b].name==c){this.jsRunSequence[b].code=e}}}if(!!this.jsRunSequence[0]&&!!this.jsRunSequence[0].code&&this.jsRunSequence[0].status!="failed"){var a=document.createElement("script");a.appendChild(document.createTextNode(this.jsRunSequence[0].code));a.type="text/javascript";document.getElementsByTagName("head")[0].appendChild(a);this.jsRunSequence.shift();if(this.jsRunSequence.length>0){this.runjs()}}else{if(!!this.jsRunSequence[0]&&this.jsRunSequence[0].status=="failed"){var d=this;var a=document.createElement("script");a.src=this.jsRunSequence[0].path;a.type="text/javascript";this.jsRunSequence[0].status="loading";a.onload=function(){d.jsRunSequence.shift();if(d.jsRunSequence.length>0){d.runjs()}};document.body.appendChild(a)}}};lsloader.tagLoad=function(b,a){this.jsRunSequence.push({name:a,code:"",path:b,status:"failed"});this.runjs()};lsloader.jsfallback=function(c,b){if(!!this.jsnamemap[b]){return}else{this.jsnamemap[b]=b}for(var a in this.jsRunSequence){if(this.jsRunSequence[a].name==b){this.jsRunSequence[a].code="";this.jsRunSequence[a].status="failed";this.jsRunSequence[a].path=c}}this.runjs()};lsloader.cssfallback=function(e,c,b){if(!!this.cssnamemap[c]){return}else{this.cssnamemap[c]=1}var d=document.createElement("link");d.type="text/css";d.href=e;d.rel="stylesheet";d.onload=d.onerror=b;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(d,a)};lsloader.runInlineScript=function(c,b){var a=document.getElementById(b).innerText;this.jsRunSequence.push({name:c,code:a});this.runjs()}})();</script>
+
+    <!-- Import queue -->
+    <script>function Queue(){this.dataStore=[];this.offer=b;this.poll=d;this.execNext=a;this.debug=false;this.startDebug=c;function b(e){if(this.debug){console.log("Offered a Queued Function.")}if(typeof e==="function"){this.dataStore.push(e)}else{console.log("You must offer a function.")}}function d(){if(this.debug){console.log("Polled a Queued Function.")}return this.dataStore.shift()}function a(){var e=this.poll();if(e!==undefined){if(this.debug){console.log("Run a Queued Function.")}e()}}function c(){this.debug=true}}var queue=new Queue();</script>
+
+    <!-- Import CSS -->
+    
+        <style id="material_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_css","/css/material.min.css?Z7a72R1E4SxzBKR/WGctOA==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+        <style id="style_css"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("style_css","/css/style.min.css?NKhlKQkXw/c66TR5p4wO+w==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+        
+
+    
+
+    
+
+    <!-- Config CSS -->
+
+<!-- Other Styles -->
+<style>
+  body, html {
+    font-family: Roboto, "Helvetica Neue", Helvetica, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "微软雅黑", Arial, sans-serif;
+    overflow-x: hidden !important;
+  }
+  
+  code {
+    font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  }
+
+  a {
+    color: #00838F;
+  }
+
+  .mdl-card__media,
+  #search-label,
+  #search-form-label:after,
+  #scheme-Paradox .hot_tags-count,
+  #scheme-Paradox .sidebar_archives-count,
+  #scheme-Paradox .sidebar-colored .sidebar-header,
+  #scheme-Paradox .sidebar-colored .sidebar-badge{
+    background-color: #0097A7 !important;
+  }
+
+  /* Sidebar User Drop Down Menu Text Color */
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:hover,
+  #scheme-Paradox .sidebar-colored .sidebar-nav>.dropdown>.dropdown-menu>li>a:focus {
+    color: #0097A7 !important;
+  }
+
+  #post_entry-right-info,
+  .sidebar-colored .sidebar-nav li:hover > a,
+  .sidebar-colored .sidebar-nav li:hover > a i,
+  .sidebar-colored .sidebar-nav li > a:hover,
+  .sidebar-colored .sidebar-nav li > a:hover i,
+  .sidebar-colored .sidebar-nav li > a:focus i,
+  .sidebar-colored .sidebar-nav > .open > a,
+  .sidebar-colored .sidebar-nav > .open > a:hover,
+  .sidebar-colored .sidebar-nav > .open > a:focus,
+  #ds-reset #ds-ctx .ds-ctx-entry .ds-ctx-head a {
+    color: #0097A7 !important;
+  }
+
+  .toTop {
+    background: #757575 !important;
+  }
+
+  .material-layout .material-post>.material-nav,
+  .material-layout .material-index>.material-nav,
+  .material-nav a {
+    color: #757575;
+  }
+
+  #scheme-Paradox .MD-burger-layer {
+    background-color: #757575;
+  }
+
+  #scheme-Paradox #post-toc-trigger-btn {
+    color: #757575;
+  }
+
+  .post-toc a:hover {
+    color: #00838F;
+    text-decoration: underline;
+  }
+
+</style>
+
+
+<!-- Theme Background Related-->
+
+    <style>
+      body{
+        background-image: url(/img/bg.png);
+      }
+    </style>
+
+
+
+
+<!-- Fade Effect -->
+
+    <style>
+      .fade {
+        transition: all 500ms linear;
+        -webkit-transform: translate3d(0,0,0);
+        -moz-transform: translate3d(0,0,0);
+        -ms-transform: translate3d(0,0,0);
+        -o-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+        opacity: 1;
+      }
+
+      .fade.out{
+        opacity: 0;
+      }
+    </style>
+
+
+<!-- Import Font -->
+<!-- Import Roboto -->
+
+    <link href="https://fonts.proxy.ustclug.org/css?family=Roboto:300,400,500" rel="stylesheet">
+
+
+<!-- Import Material Icons -->
+
+
+    <style id="material_icons"></style><script>if(typeof window.lsLoadCSSMaxNums === "undefined")window.lsLoadCSSMaxNums = 0;window.lsLoadCSSMaxNums++;lsloader.load("material_icons","/css/material-icons.css?pqhB/Rd/ab0H2+kZp0RDmw==",function(){if(typeof window.lsLoadCSSNums === "undefined")window.lsLoadCSSNums = 0;window.lsLoadCSSNums++;if(window.lsLoadCSSNums == window.lsLoadCSSMaxNums)document.documentElement.style.display="";}, false)</script>
+
+
+
+
+    <!-- Import jQuery -->
+    
+        <script>lsloader.load("jq_js","/js/jquery.min.js?qcusAULNeBksqffqUM2+Ig==", true)</script>
+    
+
+    <!-- WebAPP Icons -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="新世界的Kami">
+    <meta name="msapplication-starturl" content="https://newkami.cn/2019/01/02/axios-encapsulation/">
+    <meta name="msapplication-navbutton-color" content="#0097A7">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-title" content="新世界的Kami">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon" href="/img/logo.png">
+
+    <!-- Site Verification -->
+    
+    
+
+    <!-- RSS -->
+    
+
+    <!-- The Open Graph protocol -->
+    <meta property="og:url" content="https://newkami.cn/2019/01/02/axios-encapsulation/">
+    <meta property="og:type" content="blog">
+    <meta property="og:title" content="Axios 实用封装 | 新世界的Kami">
+    <meta property="og:image" content="/img/logo.png">
+    <meta property="og:description" content="Axios 实用封装Axios 在 vue 官方推荐后被越来越多的人使用，但是不得不说在项目直接使用 axios 实在是繁琐，每次都要写一堆的配置，而且将配置写在业务代码中十分地不雅，一般在项目中使用的时候都会将其再次封装，以便更好的使用。但是在网上找了一圈，都没发现让我满意的方案，不是不优雅，就是根本不实用。于是我自己实现了个简单但是非常实用的封装。">
+    <meta property="og:article:tag" content="前端"> <meta property="og:article:tag" content="JavaScript"> <meta property="og:article:tag" content="AJAX"> <meta property="og:article:tag" content="axios"> <meta property="og:article:tag" content="webpack"> 
+
+    
+        <meta property="article:published_time" content="Wed Jan 02 2019 15:11:01 GMT+0800">
+        <meta property="article:modified_time" content="Mon Jan 21 2019 15:53:56 GMT+0800">
+    
+
+    <!-- The Twitter Card protocol -->
+    <meta name="twitter:card" content="summary_large_image">
+
+    <!-- Add canonical link for SEO -->
+    
+        <link rel="canonical" href="https://newkami.cn/2019/01/02/axios-encapsulation/index.html">
+    
+
+    <!-- Structured-data for SEO -->
+    
+        
+
+
+<script type="application/ld+json">
+{
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "mainEntityOfPage": "https://newkami.cn/2019/01/02/axios-encapsulation/index.html",
+    "headline": "Axios 实用封装",
+    "datePublished": "Wed Jan 02 2019 15:11:01 GMT+0800",
+    "dateModified": "Mon Jan 21 2019 15:53:56 GMT+0800",
+    "author": {
+        "@type": "Person",
+        "name": "FETE",
+        "image": {
+            "@type": "ImageObject",
+            "url": "/img/author.jpg"
+        },
+        "description": "感谢你停下匆忙的脚步,你可以随意浏览,希望你开心"
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "新世界的Kami",
+        "logo": {
+            "@type":"ImageObject",
+            "url": "/img/logo.png"
+        }
+    },
+    "keywords": ",前端,JavaScript,AJAX,axios,webpack",
+    "description": "Axios 实用封装Axios 在 vue 官方推荐后被越来越多的人使用，但是不得不说在项目直接使用 axios 实在是繁琐，每次都要写一堆的配置，而且将配置写在业务代码中十分地不雅，一般在项目中使用的时候都会将其再次封装，以便更好的使用。但是在网上找了一圈，都没发现让我满意的方案，不是不优雅，就是根本不实用。于是我自己实现了个简单但是非常实用的封装。",
+}
+</script>
+
+
+    
+
+    <!-- Analytics -->
+    
+    
+    
+
+    <!-- Custom Head -->
+    
+
+</head>
+
+
+    
+        <body id="scheme-Paradox" class="lazy">
+            <div class="material-layout  mdl-js-layout has-drawer is-upgraded">
+                
+
+                <!-- Main Container -->
+                <main class="material-layout__content" id="main">
+
+                    <!-- Top Anchor -->
+                    <div id="top"></div>
+
+                    
+                        <!-- Hamburger Button -->
+                        <button class="MD-burger-icon sidebar-toggle">
+                            <span id="MD-burger-id" class="MD-burger-layer"></span>
+                        </button>
+                    
+
+                    <!-- Post TOC -->
+
+    
+    <!-- Back Button -->
+    <!--
+    <div class="material-back" id="backhome-div" tabindex="0">
+        <a class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon"
+           href="#" onclick="window.history.back();return false;"
+           target="_self"
+           role="button"
+           data-upgraded=",MaterialButton,MaterialRipple">
+            <i class="material-icons" role="presentation">arrow_back</i>
+            <span class="mdl-button__ripple-container">
+                <span class="mdl-ripple"></span>
+            </span>
+        </a>
+    </div>
+    -->
+
+
+    <!-- Left aligned menu below button -->
+    
+    
+    <button id="post-toc-trigger-btn" class="mdl-button mdl-js-button mdl-button--icon">
+        <i class="material-icons">format_list_numbered</i>
+    </button>
+
+    <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#Axios-实用封装"><span class="post-toc-text">Axios 实用封装</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#实现思路"><span class="post-toc-text">实现思路</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#添加-axios-基本配置"><span class="post-toc-text"> 添加 axios 基本配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#添加请求拦截器"><span class="post-toc-text">添加请求拦截器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#获取不同模块下的-apis"><span class="post-toc-text"> 获取不同模块下的 apis</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#封装发送请求方法"><span class="post-toc-text">封装发送请求方法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#完整代码"><span class="post-toc-text">完整代码</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#如何使用"><span class="post-toc-text">如何使用</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#1-编写请求配置"><span class="post-toc-text">1. 编写请求配置</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#2-引入封装后的-axios"><span class="post-toc-text">2. 引入封装后的 axios</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#3-发送请求"><span class="post-toc-text">3. 发送请求</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#4-让请求更加-hack"><span class="post-toc-text">4. 让请求更加 hack</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#最后"><span class="post-toc-text">最后</span></a></li></ol></li></ol>
+    </ul>
+    
+
+
+
+
+<!-- Layouts -->
+
+    <!-- Post Module -->
+    <div class="material-post_container">
+
+        <div class="material-post mdl-grid">
+            <div class="mdl-card mdl-shadow--4dp mdl-cell mdl-cell--12-col">
+
+                <!-- Post Header(Thumbnail & Title) -->
+                
+    <!-- Paradox Post Header -->
+    
+        
+            <!-- Random Thumbnail -->
+            <div class="post_thumbnail-random mdl-card__media mdl-color-text--grey-50">
+            <script type="text/ls-javascript" id="post-thumbnail-script">
+    var randomNum = Math.floor(Math.random() * 2 + 1);
+
+    $('.post_thumbnail-random').attr('data-original', '/img/random/material-' + randomNum + '.png');
+    $('.post_thumbnail-random').addClass('lazy');
+</script>
+
+        
+    
+            <p class="article-headline-p">
+                Axios 实用封装
+            </p>
+        </div>
+
+
+
+
+
+                
+                    <!-- Paradox Post Info -->
+                    <div class="mdl-color-text--grey-700 mdl-card__supporting-text meta">
+
+    <!-- Author Avatar -->
+    <div id="author-avatar">
+        <img src="/img/author.jpg" width="44px" height="44px" alt="Author Avatar">
+    </div>
+    <!-- Author Name & Date -->
+    <div>
+        <strong>FETE</strong>
+        <span>1月 02, 2019</span>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- Favorite -->
+    <!--
+        <button id="article-functions-like-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon btn-like">
+            <i class="material-icons" role="presentation">favorite</i>
+            <span class="visuallyhidden">favorites</span>
+        </button>
+    -->
+
+    <!-- Qrcode -->
+    
+
+    <!-- Tags (bookmark) -->
+    
+    <button id="article-functions-viewtags-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+        <i class="material-icons" role="presentation">bookmark</i>
+        <span class="visuallyhidden">bookmark</span>
+    </button>
+    <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
+        <li class="mdl-menu__item">
+        <a class="post_tag-link" href="/tags/AJAX/">AJAX</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/JavaScript/">JavaScript</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/axios/">axios</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/webpack/">webpack</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/前端/">前端</a>
+    </li></ul>
+    
+
+    <!-- Share -->
+    
+        <button id="article-fuctions-share-button" class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon">
+    <i class="material-icons" role="presentation">share</i>
+    <span class="visuallyhidden">share</span>
+</button>
+<ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-fuctions-share-button">
+    
+
+    
+        
+            <!-- Busuanzi Views -->
+            <a class="post_share-link" href="#">
+                <li class="mdl-menu__item">
+                    <span id="busuanzi_container_page_pv">
+                        <span id="busuanzi_value_page_pv"></span>&nbsp;浏览量
+                    </span>
+                </li>
+            </a>
+        
+    
+
+    <!-- Share Weibo -->
+    
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Axios 实用封装&url=https://newkami.cn/2019/01/02/axios-encapsulation/index.html&pic=https://newkami.cn/img/favicon.ico&searchPic=false&style=simple" target="_blank">
+            <li class="mdl-menu__item">
+                分享到微博
+            </li>
+        </a>
+    
+
+    <!-- Share Twitter -->
+    
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Axios 实用封装&url=https://newkami.cn/2019/01/02/axios-encapsulation/index.html&via=FETE" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Twitter
+            </li>
+        </a>
+    
+
+    <!-- Share Facebook -->
+    
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://newkami.cn/2019/01/02/axios-encapsulation/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Facebook
+            </li>
+        </a>
+    
+
+    <!-- Share Google+ -->
+    
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://newkami.cn/2019/01/02/axios-encapsulation/index.html" target="_blank">
+            <li class="mdl-menu__item">
+                分享到 Google+
+            </li>
+        </a>
+    
+
+    <!-- Share LinkedIn -->
+    
+
+    <!-- Share QQ -->
+    
+
+    <!-- Share Telegram -->
+    
+</ul>
+
+    
+</div>
+
+                
+
+                <!-- Post Content -->
+                <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
+    
+        <h1 id="Axios-实用封装"><a href="#Axios-实用封装" class="headerlink" title="Axios 实用封装"></a>Axios 实用封装</h1><p>Axios 在 vue 官方推荐后被越来越多的人使用，但是不得不说在项目直接使用 axios 实在是繁琐，每次都要写一堆的配置，而且将配置写在业务代码中十分地不雅，一般在项目中使用的时候都会将其再次封装，以便更好的使用。但是在网上找了一圈，都没发现让我满意的方案，不是不优雅，就是根本不实用。于是我自己实现了个简单但是非常实用的封装。</p>
+<a id="more"></a>
+<h2 id="实现思路"><a href="#实现思路" class="headerlink" title="实现思路"></a>实现思路</h2><p>我个人理想中的请求方案如下：</p>
+<ol>
+<li>实际请求与请求配置解耦</li>
+<li>请求配置可配置</li>
+<li>请求配置集中管理</li>
+<li>请求配置去『中心化』</li>
+</ol>
+<p>可能你们会问，什么叫集中管理但去『中心化』？集中管理不难理解，但是如果集中到一个文件的话，可能项目初期并没有什么问题，但是一旦项目做大了，这个文件对于维护者来说简直就是灾难，所以需要将一个文件分成多个文件『集中』管理。</p>
+<p>但是划分的规则是什么？以功能模块划分。这个在我们公司的项目中已经有了很好的实践，以下是文件结构：</p>
+<pre><code>.
+├── src
+|   ├── modules
+|   |   ├── module1
+|   |   |   ├── apis.js
+|   |   |   └── ...
+|   |   ├── module2
+|   |   |   ├── apis.js
+|   |   |   └── ...
+|   |   └── ...
+|   ├── apis.js
+|   └── ...
+└── ...
+</code></pre><p>我们的封装就  写在 <code>src/apis.js</code> 文件中。</p>
+<h3 id="添加-axios-基本配置"><a href="#添加-axios-基本配置" class="headerlink" title=" 添加 axios 基本配置"></a> 添加 axios 基本配置</h3><p>具体配置项的意思这里就不写了，详见官网。<code>baseURL</code> 可根据公司的情况和环境变量来注入不用的值。</p>
+<pre><code class="javascript">import axios from &quot;axios&quot;;
+
+const Axios = axios.create({
+    baseURL: &quot;/&quot;,
+    responseType: &quot;json&quot;,
+    withCredentials: true,
+    headers: {
+        Accept: &quot;application/json&quot;,
+        &quot;Content-Type&quot;: &quot;application/json&quot;
+    },
+    validateStatus: status =&gt; {
+        return (status &gt;= 200 &amp;&amp; status &lt; 300) || status === 304;
+    }
+});
+</code></pre>
+<h3 id="添加请求拦截器"><a href="#添加请求拦截器" class="headerlink" title="添加请求拦截器"></a>添加请求拦截器</h3><p>请求拦截器中可以做一些骚操作，这里就简单地添加 <code>token</code>。</p>
+<pre><code class="javascript">Axios.interceptors.request.use(
+    config =&gt; {
+        /*FIXME*/
+        // 此处根据公司情况替换获取 token 的方式
+        const token = &quot;xxx&quot;;
+        if (token) {
+            config.headers.Authorization = `Bearer ${token}`;
+        }
+        return config;
+    },
+    error =&gt; {
+        return Promise.reject(error);
+    }
+);
+</code></pre>
+<h3 id="获取不同模块下的-apis"><a href="#获取不同模块下的-apis" class="headerlink" title=" 获取不同模块下的 apis"></a> 获取不同模块下的 apis</h3><p><code>require.context</code> 是 webpack 动态引入文件的方法，如果你们公司不使用 webpack 进行打包，可使用 node 的 <code>fs</code> 模块。<code>require.context</code> 具体的使用方式见 <a href="https://webpack.js.org/guides/dependency-management/#require-context" target="_blank" rel="noopener">webpack 官网</a></p>
+<pre><code class="javascript">let apis = {};
+const context = require.context(`./modules`, true, /apis\.js$/);
+context.keys().forEach(key =&gt; {
+    const { default: api } = context(key);
+    apis = Object.assign(apis, api);
+});
+</code></pre>
+<h3 id="封装发送请求方法"><a href="#封装发送请求方法" class="headerlink" title="封装发送请求方法"></a>封装发送请求方法</h3><p>直接上代码：</p>
+<pre><code class="typescript">Object.keys(apis).forEach((key: string) =&gt; {
+    const config = apis[key];
+
+    /**
+     * 实际发送请求的方法
+     * @param restful   restful 参数，在使用 restful 风格的 URL 时需要
+     * @param params    请求参数
+     * @return {Promise}
+     */
+    function request(restful: object, params: object) {
+        if (!config.transform) {
+            if (config.restful) {
+                const match = config.url.match(/(?&lt;=\{)[^\}]+/g);
+                if (match &amp;&amp; match.length &gt; 0) {
+                    match.forEach((str: string) =&gt; {
+                        if (!restful || (typeof restful) !== &#39;object&#39; || !Object.keys(restful).includes(str)) {
+                            let cancel = (message: string) =&gt; {
+                            };
+                            config.cancelToken = new CancelToken((c) =&gt; cancel = c);
+                            cancel(`${key} 请求中 ${str} 参数未注入`);
+                        } else {
+                            config.url = config.url.replace(`{${str}}`, restful[str]);
+                        }
+                    });
+                    config.transform = true;
+                } else {
+                    let cancel = (message: string) =&gt; {
+                    };
+                    config.cancelToken = new CancelToken((c) =&gt; cancel = c);
+                    cancel(&#39;你似乎并不需要 restful 风格，请删除 restful:true，或赋值为 false&#39;);
+                }
+            }
+            const parameter = !params ? restful : params;
+            config.method = config.method || &#39;get&#39;;
+            if (config.method === &#39;get&#39; || config.method === &#39;delete&#39;) {
+                config.params = parameter;
+            } else if (config.method === &#39;post&#39; || config.method === &#39;put&#39; || config.method === &#39;patch&#39;) {
+                config.data = parameter;
+            }
+        }
+        return Axios.request(config);
+    }
+    apis[key] = request;
+});
+
+</code></pre>
+<p>这里解决一个痛点：axios 不支持 restful。至少我翻了官网没看到有支持 restful，如果有哪位大佬知道 axios 原生支持 restful 的方法，请评论或邮件指导，感谢。</p>
+<h3 id="完整代码"><a href="#完整代码" class="headerlink" title="完整代码"></a>完整代码</h3><p>完整代码可以看我的 github 上的<a href="https://github.com/FETE-CH/vue-falsework" target="_blank" rel="noopener">项目</a>。</p>
+<h2 id="如何使用"><a href="#如何使用" class="headerlink" title="如何使用"></a>如何使用</h2><h3 id="1-编写请求配置"><a href="#1-编写请求配置" class="headerlink" title="1. 编写请求配置"></a>1. 编写请求配置</h3><p>在各个模块下的 <code>apis.js</code> 文件中写入以下配置：</p>
+<pre><code class="javascript">export default {
+    getTest: {
+        // 请求的 url
+        url: &#39;/user/{id}&#39;,
+        // 请求的方式，默认是 get 方式，可不写
+        method:&#39;get&#39;
+        // 是否支持 restful
+        restful: true
+    },
+</code></pre>
+<p>如果有请求的域名和基本配置中的不一致的，可以使用绝对 URL，记得带上网络协议</p>
+<h3 id="2-引入封装后的-axios"><a href="#2-引入封装后的-axios" class="headerlink" title="2. 引入封装后的 axios"></a>2. 引入封装后的 axios</h3><p>在 <code>main.js</code> 中引入，并添加到 Vue 原型和 window 对象上，这样可以在 vue 实例和全局都可以使用</p>
+<pre><code class="javascript">import apis from &#39;./apis&#39;;
+
+Vue.prototype.$apis = apis;
+window.apis = apis;
+</code></pre>
+<h3 id="3-发送请求"><a href="#3-发送请求" class="headerlink" title="3. 发送请求"></a>3. 发送请求</h3><p>在 vue 文件中可直接使用 <code>this.$apis</code>，如果 vue 实例不存在则可以使用 <code>window.apis</code>  </p>
+<pre><code class="javascript">this.$apis.getTest({userId: 1, id: 2}, {name: &#39;Tom&#39;}).then((data: any) =&gt; {
+    console.log(data);
+}).catch((e: any) =&gt; {
+    Promise.reject(e);
+});
+</code></pre>
+<h3 id="4-让请求更加-hack"><a href="#4-让请求更加-hack" class="headerlink" title="4. 让请求更加 hack"></a>4. 让请求更加 hack</h3><p>虽然使用 <code>Promise</code> 可以简单地获取数据和捕获错误，但是如果使用 <code>ES7</code> 中的 <code>async</code> 函数却不得不 <code>try/catch</code>，这里使用大佬的提供一个更加 hack 的方式，详见 <a href="https://blog.grossman.io/how-to-write-async-await-without-try-catch-blocks-in-javascript/" target="_blank" rel="noopener">How to write async await without try-catch blocks in Javascript</a></p>
+<pre><code class="javascript">async getTestData() {
+    const [error, data] = await to(this.$apis.getTest({userId: 1, id: 2}, {name: &#39;Tom&#39;}));
+    if(error){
+        ...
+    }
+    ...
+}
+</code></pre>
+<h2 id="最后"><a href="#最后" class="headerlink" title="最后"></a>最后</h2><p>由于本人经验尚浅，可能存在一些 bug，如果发现请及时提出，与君共勉，谢谢。</p>
+<hr>
+<p><strong>欢迎转载，转载请注明出处：<a href="https://newkami.cn/2019/01/02/axios-encapsulation/">https://newkami.cn/2019/01/02/axios-encapsulation/</a></strong></p>
+
+        
+                <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
+                    <p><strong>
+                         
+                            <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png"></a><br>本博客采用<a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可。
+                        </strong>
+                        <br>
+                        <strong>本文链接：</strong><a href="https://newkami.cn/2019/01/02/axios-encapsulation/">https://newkami.cn/2019/01/02/axios-encapsulation/</a>
+                    </p>
+                </blockquote>
+        
+    
+
+    
+</div>
+
+
+                
+
+                <!-- Post Comments -->
+                
+                    
+                
+            </div>
+
+            <!-- Post Prev & Next Nav -->
+            <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
+    <!-- Prev Nav -->
+    
+        <a href="/2019/01/11/vue-router-decentralization/" id="post_nav-newer" class="prev-content">
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_back</i>
+            </button>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            新篇
+        </a>
+    
+
+    <!-- Section Spacer -->
+    <div class="section-spacer"></div>
+
+    <!-- Next Nav -->
+    
+        <a href="/2018/11/27/vue-code-specification/" id="post_nav-older" class="next-content">
+            旧篇
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
+                <i class="material-icons">arrow_forward</i>
+            </button>
+        </a>
+    
+</nav>
+
+        </div>
+    </div>
+
+
+
+                    
+                        <!-- Overlay For Active Sidebar -->
+<div class="sidebar-overlay"></div>
+
+<!-- Material sidebar -->
+<aside id="sidebar" class="sidebar sidebar-colored sidebar-fixed-left" role="navigation">
+    <div id="sidebar-main">
+        <!-- Sidebar Header -->
+        <div class="sidebar-header header-cover" style="background-image: url(/img/sidebar_header.png);">
+    <!-- Top bar -->
+    <div class="top-bar"></div>
+
+    <!-- Sidebar toggle button -->
+    <button type="button" class="sidebar-toggle mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon" style="display: initial;" data-upgraded=",MaterialButton,MaterialRipple">
+        <i class="material-icons">clear_all</i>
+        <span class="mdl-button__ripple-container">
+            <span class="mdl-ripple">
+            </span>
+        </span>
+    </button>
+
+    <!-- Sidebar Avatar -->
+    <div class="sidebar-image">
+        <img src="/img/author.jpg" alt="FETE's avatar">
+    </div>
+
+    <!-- Sidebar Email -->
+    <a data-toggle="dropdown" class="sidebar-brand" href="#settings-dropdown">
+        rabbitshotel@gmail.com
+        <b class="caret"></b>
+    </a>
+</div>
+
+
+        <!-- Sidebar Navigation  -->
+        <ul class="nav sidebar-nav">
+    <!-- User dropdown  -->
+    <li class="dropdown">
+        <ul id="settings-dropdown" class="dropdown-menu">
+            
+                <li>
+                    <a href="mailto: rabbitshotel@gmail.com" target="_blank" title="Email Me">
+                        
+                            <i class="material-icons sidebar-material-icons sidebar-indent-left1pc-element">email</i>
+                        
+                        Email Me
+                    </a>
+                </li>
+            
+        </ul>
+    </li>
+
+    <!-- Homepage -->
+    
+        <li id="sidebar-first-li">
+            <a href="/">
+                
+                    <i class="material-icons sidebar-material-icons">home</i>
+                
+                主页
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Archives  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">inbox</i>
+                
+                    归档
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            <li>
+                <a class="sidebar_archives-link" href="/archives/2019/01/">一月 2019<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/11/">十一月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/09/">九月 2018<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/05/">五月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2018/03/">三月 2018<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/12/">十二月 2017<span class="sidebar_archives-count">1</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/11/">十一月 2017<span class="sidebar_archives-count">3</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/10/">十月 2017<span class="sidebar_archives-count">2</span></a></li><li><a class="sidebar_archives-link" href="/archives/2017/09/">九月 2017<span class="sidebar_archives-count">2</span></a>
+            </li></ul>
+        </li>
+        
+    
+
+    <!-- Categories  -->
+    
+        <li class="dropdown">
+            <a href="#" class="ripple-effect dropdown-toggle" data-toggle="dropdown">
+                
+                    <i class="material-icons sidebar-material-icons">chrome_reader_mode</i>
+                
+                分类
+                <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                <a class="sidebar_archives-link" href="/categories/学习笔记/">学习笔记<span class="sidebar_archives-count">7</span></a></li><li><a class="sidebar_archives-link" href="/categories/技术教程/">技术教程<span class="sidebar_archives-count">8</span></a>
+            </li></ul>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+
+    <!-- Pages  -->
+    
+        <li>
+            <a href="/tags/index.html" title="标签云">
+                
+                    <i class="material-icons sidebar-material-icons">loyalty</i>
+                
+                标签云
+            </a>
+        </li>
+        
+            <li class="divider"></li>
+        
+    
+        <li>
+            <a href="/timeline/index.html" title="时间轴">
+                
+                    <i class="material-icons sidebar-material-icons">timeline</i>
+                
+                时间轴
+            </a>
+        </li>
+        
+    
+
+    <!-- Article Number  -->
+    
+</ul>
+
+
+        <!-- Sidebar Footer -->
+        <!--
+I'm glad you use this theme, the development is no so easy, I hope you can keep the copyright, I will thank you so much.
+If you still want to delete the copyrights, could you still retain the first one? Which namely "Theme Material"
+It will not impact the appearance and can give developers a lot of support :)
+
+很高兴您使用并喜欢该主题，开发不易 十分谢谢与希望您可以保留一下版权声明。
+如果您仍然想删除的话 能否只保留第一项呢？即 "Theme Material"
+它不会影响美观并可以给开发者很大的支持和动力。 :)
+-->
+
+<!-- Sidebar Divider -->
+
+    <div class="sidebar-divider"></div>
+
+
+<!-- Theme Material -->
+
+    <a href="https://github.com/viosey/hexo-theme-material" class="sidebar-footer-text-a" target="_blank">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+            主题 - Material
+            <span class="sidebar-badge badge-circle">i</span>
+        </div>
+    </a>
+
+
+<!-- Help & Support -->
+<!--
+
+-->
+
+<!-- Feedback -->
+<!--
+
+    <a href="https://github.com/viosey/hexo-theme-material/issues" target="_blank" class="sidebar-footer-text-a">
+        <div class="sidebar-text mdl-button mdl-js-button mdl-js-ripple-effect sidebar-footer-text-div" data-upgraded=",MaterialButton,MaterialRipple">
+        sidebar.feedback
+        <span class="mdl-button__ripple-container"><span class="mdl-ripple"></span></span></div>
+    </a>
+
+-->
+
+<!-- About Theme -->
+<!--
+
+-->
+
+    </div>
+
+    <!-- Sidebar Image -->
+    
+
+</aside>
+
+                    
+
+                    
+                        <!-- Footer Top Button -->
+                        <div id="back-to-top" class="toTop-wrap">
+    <a href="#top" class="toTop">
+        <i class="material-icons footer_top-i">expand_less</i>
+    </a>
+</div>
+
+                    
+
+                    <!--Footer-->
+<footer class="mdl-mini-footer" id="bottom">
+    
+        <!-- Paradox Footer Left Section -->
+        <div class="mdl-mini-footer--left-section sns-list">
+    <!-- Twitter -->
+    
+        <a href="https://twitter.com/FETE_CH" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-twitter">
+                <span class="visuallyhidden">Twitter</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Facebook -->
+    
+
+    <!-- Google + -->
+    
+
+    <!-- Weibo -->
+    
+        <a href="https://www.weibo.com/menghuanzox" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-weibo">
+                <span class="visuallyhidden">Weibo</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Instagram -->
+    
+
+    <!-- Tumblr -->
+    
+
+    <!-- Github -->
+    
+        <a href="https://github.com/FETE-CH" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-github">
+                <span class="visuallyhidden">Github</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- LinkedIn -->
+    
+
+    <!-- Zhihu -->
+    
+        <a href="https://www.jianshu.com/u/2b77d70f5e8f" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-zhihu">
+                <span class="visuallyhidden">Zhihu</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Bilibili -->
+    
+        <a href="https://space.bilibili.com/3191046" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-bilibili">
+                <span class="visuallyhidden">Bilibili</span>
+            </button><!--
+     --></a>
+    
+
+    <!-- Telegram -->
+    
+
+    <!-- V2EX -->
+    
+
+    <!-- Segmentfault -->
+    
+        <a href="https://segmentfault.com/u/fete" target="_blank">
+            <button class="mdl-mini-footer--social-btn social-btn footer-sns-segmentfault">
+                <span class="visuallyhidden">Segmentfault</span>
+            </button><!--
+     --></a>
+    
+</div>
+
+
+        <!--Copyright-->
+        <div id="copyright">
+            Copyright&nbsp;©&nbsp;<span year=""></span>&nbsp;新世界的Kami
+            
+                <br>
+                
+                    生命不息，学习不止
+                
+            
+        </div>
+
+        <!-- Paradox Footer Right Section -->
+
+        <!--
+        I am glad you use this theme, the development is no so easy, I hope you can keep the copyright.
+        It will not impact the appearance and can give developers a lot of support :)
+
+        很高兴您使用该主题，开发不易，希望您可以保留一下版权声明。
+        它不会影响美观并可以给开发者很大的支持。 :)
+        -->
+
+        <div class="mdl-mini-footer--right-section">
+            <div>
+                <div class="footer-develop-div">Powered by <a href="https://hexo.io" target="_blank" class="footer-develop-a">Hexo</a></div>
+                <div class="footer-develop-div">Theme - <a href="https://github.com/viosey/hexo-theme-material" target="_blank" class="footer-develop-a">Material</a></div>
+            </div>
+        </div>
+    
+</footer>
+
+
+                    <!-- Import JS File -->
+
+    <script>lsloader.load("lazyload_js","/js/lazyload.min.js?1BcfzuNXqV+ntF6gq+5X3Q==", true)</script>
+
+
+
+    <script>lsloader.load("js_js","/js/js.min.js?Bn9UzEm8RrBSxqyZB0zPjA==", true)</script>
+
+
+
+    <script>lsloader.load("np_js","/js/nprogress.js?pl3Qhb9lvqR1FlyLUna1Yw==", true)</script>
+
+
+<script type="text/ls-javascript" id="NProgress-script">
+    NProgress.configure({
+        showSpinner: true
+    });
+    NProgress.start();
+    $('#nprogress .bar').css({
+        'background': '#29d'
+    });
+    $('#nprogress .peg').css({
+        'box-shadow': '0 0 10px #29d, 0 0 15px #29d'
+    });
+    $('#nprogress .spinner-icon').css({
+        'border-top-color': '#29d',
+        'border-left-color': '#29d'
+    });
+    setTimeout(function() {
+        NProgress.done();
+        $('.fade').removeClass('out');
+    }, 500);
+</script>
+
+
+
+
+
+
+
+    <!-- Busuanzi -->
+    <script src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+<!-- UC Browser Compatible -->
+<script>
+	var agent = navigator.userAgent.toLowerCase();
+	if(agent.indexOf('ucbrowser')>0) {
+		document.write('<link rel="stylesheet" href="/css/uc.css">');
+	   alert('由于 UC 浏览器使用极旧的内核，而本网站使用了一些新的特性。\n为了您能更好的浏览，推荐使用 Chrome 或 Firefox 浏览器。');
+	}
+</script>
+
+<!-- Import prettify js  -->
+
+
+    
+        <script>lsloader.load("hanabi","/js/hanabi-browser-bundle.js?Pki5+pzkluqu53g+ouMWpA==", true)</script>
+    
+
+
+<!-- Window Load -->
+<!-- add class for prettify -->
+<script type="text/ls-javascript" id="window-load">
+    $(window).on('load', function() {
+        // Post_Toc parent position fixed
+        $('.post-toc-wrap').parent('.mdl-menu__container').css('position', 'fixed');
+    });
+
+    
+    
+        
+        
+        HanabiBrowser.start('pre code',true);
+    
+</script>
+
+<!-- MathJax Load-->
+
+
+<!-- Bing Background -->
+
+
+<script type="text/ls-javascript" id="lazy-load">
+    // Offer LazyLoad
+    queue.offer(function(){
+        $('.lazy').lazyload({
+            effect : 'show'
+        });
+    });
+
+    // Start Queue
+    $(document).ready(function(){
+        setInterval(function(){
+            queue.execNext();
+        },200);
+    });
+</script>
+
+<!-- Custom Footer -->
+
+
+
+<script>
+    var copyrightNow = new Date().getFullYear();
+    var textContent = document.querySelector('span[year]')
+
+    copyrightSince = 2017;
+    if (copyrightSince === copyrightNow||copyrightSince === 0000) {
+        textContent.textContent = copyrightNow
+    } else {
+        textContent.textContent = copyrightSince + ' - ' + copyrightNow
+    }
+
+    (function(){
+        var scriptList = document.querySelectorAll('script[type="text/ls-javascript"]')
+
+        for (var i = 0; i < scriptList.length; ++i) {
+            var item = scriptList[i];
+            lsloader.runInlineScript(item.id,item.id);
+        }
+    })()
+console.log('\n %c © Material Theme | Version: 1.5.6 | https://github.com/viosey/hexo-theme-material %c \n', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-left-radius:5px;border-bottom-left-radius:5px;', 'color:#455a64;background:#e0e0e0;padding:5px 0;border-top-right-radius:5px;border-bottom-right-radius:5px;');
+</script>
+
+                </main>
+            </div>
+        </body>
+    
+</html>
