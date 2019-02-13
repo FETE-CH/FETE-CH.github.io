@@ -48,7 +48,7 @@
     
     <title>
         
-            Flex 布局 | 
+            JavaScript 实现前端下载图片 | 
         
         新世界的Kami
     </title>
@@ -58,20 +58,13 @@
     <link rel="icon" href="/img/logo.png">
 
     <meta name="format-detection" content="telephone=no">
-    <meta name="description" itemprop="description" content="1. Flex 容器设置显示方式为flex
-display: flex | inline-flex;
+    <meta name="description" itemprop="description" content="JavaScript 实现前端下载图片前几天公司的项目有个需求，实现点击下载图片功能，当时我就就想着还不简单嘛，当即写下以下代码：
+const download = document.createElement(&amp;#39;a&amp;#39;);
+download.setAttribute(&amp;#39;download&amp;#39;, downloadName);
+download.clik();
 
-注意：当时设置 flex 布局之后，子元素的 float、clear、vertical-align 的属性将会失效。
-下面六种属性可以设置在容器上，它们分别是：
-
-flex-direction
-flex-wrap
-flex-flow
-justify-content
-align-items
-align-content
-">
-    <meta name="keywords" content=",前端,CSS,Flex,网页布局">
+结果出乎意料，浏览器并没有将图片下载，而是将图片在窗口中打开了。我查了下资料，发现像 Chrome 等现代浏览器会识别图片并将其打开。现在下载图片网上大部分做法是响应时添加下载头，浏览器识别到下载头就会将其下载，但是我这前端项目并做不到。那么，问题来了，如何实现前端下载图片？">
+    <meta name="keywords" content=",前端,JavaScript,Base64">
     <meta name="theme-color" content="#0097A7">
 
     <!-- Disable Fucking Bloody Baidu Tranformation -->
@@ -227,7 +220,7 @@ align-content
     <!-- WebAPP Icons -->
     <meta name="mobile-web-app-capable" content="yes">
     <meta name="application-name" content="新世界的Kami">
-    <meta name="msapplication-starturl" content="https://newkami.cn/2018/03/29/flex-layout/">
+    <meta name="msapplication-starturl" content="https://newkami.cn/2019/01/28/js-download-image/">
     <meta name="msapplication-navbutton-color" content="#0097A7">
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-title" content="新世界的Kami">
@@ -242,28 +235,21 @@ align-content
     
 
     <!-- The Open Graph protocol -->
-    <meta property="og:url" content="https://newkami.cn/2018/03/29/flex-layout/">
+    <meta property="og:url" content="https://newkami.cn/2019/01/28/js-download-image/">
     <meta property="og:type" content="blog">
-    <meta property="og:title" content="Flex 布局 | 新世界的Kami">
+    <meta property="og:title" content="JavaScript 实现前端下载图片 | 新世界的Kami">
     <meta property="og:image" content="/img/logo.png">
-    <meta property="og:description" content="1. Flex 容器设置显示方式为flex
-display: flex | inline-flex;
+    <meta property="og:description" content="JavaScript 实现前端下载图片前几天公司的项目有个需求，实现点击下载图片功能，当时我就就想着还不简单嘛，当即写下以下代码：
+const download = document.createElement(&amp;#39;a&amp;#39;);
+download.setAttribute(&amp;#39;download&amp;#39;, downloadName);
+download.clik();
 
-注意：当时设置 flex 布局之后，子元素的 float、clear、vertical-align 的属性将会失效。
-下面六种属性可以设置在容器上，它们分别是：
-
-flex-direction
-flex-wrap
-flex-flow
-justify-content
-align-items
-align-content
-">
-    <meta property="og:article:tag" content="前端"> <meta property="og:article:tag" content="CSS"> <meta property="og:article:tag" content="Flex"> <meta property="og:article:tag" content="网页布局"> 
+结果出乎意料，浏览器并没有将图片下载，而是将图片在窗口中打开了。我查了下资料，发现像 Chrome 等现代浏览器会识别图片并将其打开。现在下载图片网上大部分做法是响应时添加下载头，浏览器识别到下载头就会将其下载，但是我这前端项目并做不到。那么，问题来了，如何实现前端下载图片？">
+    <meta property="og:article:tag" content="前端"> <meta property="og:article:tag" content="JavaScript"> <meta property="og:article:tag" content="Base64"> 
 
     
-        <meta property="article:published_time" content="Thu Mar 29 2018 16:02:00 GMT+0800">
-        <meta property="article:modified_time" content="Sat Jan 19 2019 23:00:48 GMT+0800">
+        <meta property="article:published_time" content="Mon Jan 28 2019 14:44:12 GMT+0800">
+        <meta property="article:modified_time" content="Wed Feb 13 2019 17:17:38 GMT+0800">
     
 
     <!-- The Twitter Card protocol -->
@@ -271,7 +257,7 @@ align-content
 
     <!-- Add canonical link for SEO -->
     
-        <link rel="canonical" href="https://newkami.cn/2018/03/29/flex-layout/index.html">
+        <link rel="canonical" href="https://newkami.cn/2019/01/28/js-download-image/index.html">
     
 
     <!-- Structured-data for SEO -->
@@ -283,10 +269,10 @@ align-content
 {
     "@context": "https://schema.org",
     "@type": "BlogPosting",
-    "mainEntityOfPage": "https://newkami.cn/2018/03/29/flex-layout/index.html",
-    "headline": "Flex 布局",
-    "datePublished": "Thu Mar 29 2018 16:02:00 GMT+0800",
-    "dateModified": "Sat Jan 19 2019 23:00:48 GMT+0800",
+    "mainEntityOfPage": "https://newkami.cn/2019/01/28/js-download-image/index.html",
+    "headline": "JavaScript 实现前端下载图片",
+    "datePublished": "Mon Jan 28 2019 14:44:12 GMT+0800",
+    "dateModified": "Wed Feb 13 2019 17:17:38 GMT+0800",
     "author": {
         "@type": "Person",
         "name": "FETE",
@@ -304,20 +290,13 @@ align-content
             "url": "/img/logo.png"
         }
     },
-    "keywords": ",前端,CSS,Flex,网页布局",
-    "description": "1. Flex 容器设置显示方式为flex
-display: flex | inline-flex;
+    "keywords": ",前端,JavaScript,Base64",
+    "description": "JavaScript 实现前端下载图片前几天公司的项目有个需求，实现点击下载图片功能，当时我就就想着还不简单嘛，当即写下以下代码：
+const download = document.createElement(&amp;#39;a&amp;#39;);
+download.setAttribute(&amp;#39;download&amp;#39;, downloadName);
+download.clik();
 
-注意：当时设置 flex 布局之后，子元素的 float、clear、vertical-align 的属性将会失效。
-下面六种属性可以设置在容器上，它们分别是：
-
-flex-direction
-flex-wrap
-flex-flow
-justify-content
-align-items
-align-content
-",
+结果出乎意料，浏览器并没有将图片下载，而是将图片在窗口中打开了。我查了下资料，发现像 Chrome 等现代浏览器会识别图片并将其打开。现在下载图片网上大部分做法是响应时添加下载头，浏览器识别到下载头就会将其下载，但是我这前端项目并做不到。那么，问题来了，如何实现前端下载图片？",
 }
 </script>
 
@@ -381,7 +360,7 @@ align-content
     </button>
 
     <ul class="post-toc-wrap mdl-menu mdl-menu--bottom-left mdl-js-menu mdl-js-ripple-effect" for="post-toc-trigger-btn" style="max-height:80vh; overflow-y:scroll;">
-        <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-Flex-容器"><span class="post-toc-text">1. Flex 容器</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-Flex-项目属性（子元素）"><span class="post-toc-text">2. Flex 项目属性（子元素）</span></a></li></ol>
+        <ol class="post-toc"><li class="post-toc-item post-toc-level-1"><a class="post-toc-link" href="#JavaScript-实现前端下载图片"><span class="post-toc-text">JavaScript 实现前端下载图片</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#1-实现思路"><span class="post-toc-text">1. 实现思路</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Data-URLs"><span class="post-toc-text">Data URLs</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#2-代码实现"><span class="post-toc-text">2. 代码实现</span></a></li></ol></li></ol>
     </ul>
     
 
@@ -413,7 +392,7 @@ align-content
         
     
             <p class="article-headline-p">
-                Flex 布局
+                JavaScript 实现前端下载图片
             </p>
         </div>
 
@@ -432,7 +411,7 @@ align-content
     <!-- Author Name & Date -->
     <div>
         <strong>FETE</strong>
-        <span>3月 29, 2018</span>
+        <span>1月 28, 2019</span>
     </div>
 
     <div class="section-spacer"></div>
@@ -456,7 +435,7 @@ align-content
     </button>
     <ul class="mdl-menu mdl-menu--bottom-right mdl-js-menu mdl-js-ripple-effect" for="article-functions-viewtags-button">
         <li class="mdl-menu__item">
-        <a class="post_tag-link" href="/tags/CSS/">CSS</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/Flex/">Flex</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/前端/">前端</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/网页布局/">网页布局</a>
+        <a class="post_tag-link" href="/tags/Base64/">Base64</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/JavaScript/">JavaScript</a></li><li class="mdl-menu__item"><a class="post_tag-link" href="/tags/前端/">前端</a>
     </li></ul>
     
 
@@ -484,7 +463,7 @@ align-content
 
     <!-- Share Weibo -->
     
-        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=Flex 布局&url=https://newkami.cn/2018/03/29/flex-layout/index.html&pic=https://newkami.cn/img/favicon.ico&searchPic=false&style=simple" target="_blank">
+        <a class="post_share-link" href="http://service.weibo.com/share/share.php?appkey=&title=JavaScript 实现前端下载图片&url=https://newkami.cn/2019/01/28/js-download-image/index.html&pic=https://newkami.cn/img/favicon.ico&searchPic=false&style=simple" target="_blank">
             <li class="mdl-menu__item">
                 分享到微博
             </li>
@@ -493,7 +472,7 @@ align-content
 
     <!-- Share Twitter -->
     
-        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=Flex 布局&url=https://newkami.cn/2018/03/29/flex-layout/index.html&via=FETE" target="_blank">
+        <a class="post_share-link" href="https://twitter.com/intent/tweet?text=JavaScript 实现前端下载图片&url=https://newkami.cn/2019/01/28/js-download-image/index.html&via=FETE" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Twitter
             </li>
@@ -502,7 +481,7 @@ align-content
 
     <!-- Share Facebook -->
     
-        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://newkami.cn/2018/03/29/flex-layout/index.html" target="_blank">
+        <a class="post_share-link" href="https://www.facebook.com/sharer/sharer.php?u=https://newkami.cn/2019/01/28/js-download-image/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Facebook
             </li>
@@ -511,7 +490,7 @@ align-content
 
     <!-- Share Google+ -->
     
-        <a class="post_share-link" href="https://plus.google.com/share?url=https://newkami.cn/2018/03/29/flex-layout/index.html" target="_blank">
+        <a class="post_share-link" href="https://plus.google.com/share?url=https://newkami.cn/2019/01/28/js-download-image/index.html" target="_blank">
             <li class="mdl-menu__item">
                 分享到 Google+
             </li>
@@ -536,125 +515,71 @@ align-content
                 <!-- Post Content -->
                 <div id="post-content" class="mdl-color-text--grey-700 mdl-card__supporting-text fade out">
     
-        <h2 id="1-Flex-容器"><a href="#1-Flex-容器" class="headerlink" title="1. Flex 容器"></a>1. Flex 容器</h2><p>设置显示方式为flex</p>
-<pre><code class="css">display: flex | inline-flex;
+        <h1 id="JavaScript-实现前端下载图片"><a href="#JavaScript-实现前端下载图片" class="headerlink" title="JavaScript 实现前端下载图片"></a>JavaScript 实现前端下载图片</h1><p>前几天公司的项目有个需求，实现点击下载图片功能，当时我就就想着还不简单嘛，当即写下以下代码：</p>
+<pre><code class="javascript">const download = document.createElement(&#39;a&#39;);
+download.setAttribute(&#39;download&#39;, downloadName);
+download.clik();
 </code></pre>
-<p><strong>注意：当时设置 flex 布局之后，子元素的 float、clear、vertical-align 的属性将会失效。</strong></p>
-<p>下面六种属性可以设置在容器上，它们分别是：</p>
-<ul>
-<li>flex-direction</li>
-<li>flex-wrap</li>
-<li>flex-flow</li>
-<li>justify-content</li>
-<li>align-items</li>
-<li>align-content</li>
-</ul>
+<p>结果出乎意料，浏览器并没有将图片下载，而是将图片在窗口中打开了。我查了下资料，发现像 Chrome 等现代浏览器会识别图片并将其打开。现在下载图片网上大部分做法是响应时添加下载头，浏览器识别到下载头就会将其下载，但是我这前端项目并做不到。那么，问题来了，如何实现前端下载图片？</p>
 <a id="more"></a>
-<ol>
-<li><p>flex-direction: 决定主轴的方向(即项目的排列方向)</p>
-<pre><code class="css"> flex-direction: row | row-reverse | column | column-reverse;
-</code></pre>
-<ul>
-<li>row：默认值,主轴为水平方向，起点在左端。</li>
-<li>row-reverse：主轴为水平方向，起点在右端 </li>
-<li>column：主轴为垂直方向，起点在上沿  </li>
-<li>column-reverse：主轴为垂直方向，起点在下沿</li>
-</ul>
-</li>
-<li><p>flex-wrap: 决定容器内项目是否可换行</p>
-<pre><code class="css"> flex-wrap: nowrap | wrap | wrap-reverse;
-</code></pre>
-<ul>
-<li>nowrap：默认值，不换行，即当主轴尺寸固定时，当空间不足时，项目尺寸会随之调整而并不会挤到下一行。</li>
-<li>wrap：项目主轴总尺寸超出容器时换行，第一行在上方</li>
-<li>wrap-reverse：换行，第一行在下方</li>
-</ul>
-</li>
-<li><p>flex-flow: flex-direction 和 flex-wrap 的简写形式</p>
-<pre><code class="css"> flex-flow: &lt;flex-direction&gt; || &lt;flex-wrap&gt;;
-</code></pre>
-</li>
-<li><p>justify-content：定义了项目在主轴的对齐方式。</p>
-<pre><code class="css"> justify-content: flex-start | flex-end | center | space-between | space-around;
-</code></pre>
-<ul>
-<li>默认值: flex-start 左对齐</li>
-<li>flex-end：右对齐</li>
-<li>center：居中</li>
-<li>space-between：两端对齐，项目之间的间隔相等，即剩余空间等分成间隙。</li>
-<li>space-around：每个项目两侧的间隔相等，所以项目之间的间隔比项目与边缘的间隔大一倍。</li>
-</ul>
-</li>
-<li><p>align-items: 定义了项目在交叉轴上的对齐方式</p>
-<pre><code class="css"> align-items: flex-start | flex-end | center | baseline | stretch;
-</code></pre>
-<ul>
-<li>默认值为 stretch 即如果项目未设置高度或者设为 auto，将占满整个容器的高度。假设容器高度设置为 100px，而项目都没有设置高度的情况下，则项目的高度也为 100px。</li>
-<li>flex-start：交叉轴的起点对齐</li>
-<li>flex-end：交叉轴的终点对齐</li>
-<li>center：交叉轴的中点对齐</li>
-<li>baseline: 项目的第一行文字的基线对齐</li>
-</ul>
-</li>
-<li><p>align-content: 定义了多根轴线的对齐方式，如果项目只有一根轴线，那么该属性将不起作用</p>
-<pre><code class="css"> align-content: flex-start | flex-end | center | space-between | space-around | stretch;
-</code></pre>
-<p> 当 flex-wrap 设置为 wrap  的时候，容器可能会出现多条轴线，这时候你就需要去设置多条轴线之间的对齐方式了。</p>
-<ul>
-<li>当值为 stretch 时会多条轴线平分容器的垂直方向上的空间。</li>
-<li>flex-start：轴线全部在交叉轴上的起点对齐</li>
-<li>flex-end：轴线全部在交叉轴上的终点对齐</li>
-<li>center：轴线全部在交叉轴上的中间对齐</li>
-<li>space-between：轴线两端对齐，之间的间隔相等，即剩余空间等分成间隙。</li>
-<li>space-around：每个轴线两侧的间隔相等，所以轴线之间的间隔比轴线与边缘的间隔大一倍。</li>
-</ul>
-</li>
+<h2 id="1-实现思路"><a href="#1-实现思路" class="headerlink" title="1. 实现思路"></a>1. 实现思路</h2><ol>
+<li>将图片装换成 <strong>Data URLs</strong></li>
+<li>下载图片</li>
 </ol>
-<h2 id="2-Flex-项目属性（子元素）"><a href="#2-Flex-项目属性（子元素）" class="headerlink" title="2. Flex 项目属性（子元素）"></a>2. Flex 项目属性（子元素）</h2><p>有六种属性可运用在 item 项目上：</p>
-<ul>
-<li>order</li>
-<li>flex-basis</li>
-<li>flex-grow</li>
-<li>flex-shrink</li>
-<li>flex</li>
-<li>align-self</li>
-</ul>
-<ol>
-<li><p>order: 定义项目在容器中的排列顺序，数值越小，排列越靠前，默认值为 0</p>
-<pre><code class="css"> order: &lt;integer&gt;;
+<h3 id="Data-URLs"><a href="#Data-URLs" class="headerlink" title="Data URLs"></a>Data URLs</h3><blockquote>
+<p>Data URLs，即前缀为 <code>data:</code> 协议的的 URL，其允许内容创建者向文档中嵌入小文件。</p>
+</blockquote>
+<blockquote>
+<p>Data URLs 由四个部分组成：前缀(data:)、指示数据类型的MIME类型、如果非文本则为可选的base64标记、数据本身：</p>
+<pre><code>data:[&lt;mediatype&gt;][;base64],&lt;data&gt;
+</code></pre><p>mediatype 是个 MIME 类型的字符串，例如 “image/jpeg” 表示 JPEG 图像文件。如果被省略，则默认值为 text/plain;charset=US-ASCII</p>
+<p>如果数据是文本类型，你可以直接将文本嵌入 (根据文档类型，使用合适的实体字符或转义字符)。如果是二进制数据，你可以将数据进行 base64 编码之后再进行嵌入。</p>
+</blockquote>
+<p>详细请看 MDN 对 <a href="https://developer.mozilla.org/zh-CN/docs/Web/HTTP/data_URIs" target="_blank" rel="noopener">Data URLs</a> 的解释。</p>
+<h2 id="2-代码实现"><a href="#2-代码实现" class="headerlink" title="2. 代码实现"></a>2. 代码实现</h2><p>以下是获取图片 DataURL 的示例代码：</p>
+<pre><code class="javascript">/**
+* 获取图片的 base64 编码 DataURL
+* @param image JS 图像对象
+* @return {string} 已编码的 DataURL
+*/
+getImageDataURL(image) {
+    // 创建画布
+    const canvas = document.createElement(&#39;canvas&#39;);
+    canvas.width = image.width;
+    canvas.height = image.height;
+    const ctx = canvas.getContext(&#39;2d&#39;);
+    // 以图片为背景剪裁画布
+    ctx.drawImage(image, 0, 0, image.width, image.height);
+    // 获取图片后缀名
+    const extension = image.src.substring(image.src.lastIndexOf(&#39;.&#39;) + 1).toLowerCase();
+    // 某些图片 url 可能没有后缀名，默认是 png
+    return canvas.toDataURL(&#39;image/&#39; + extension, 1);
+},
 </code></pre>
-</li>
-<li><p>flex-basis: 定义了在分配多余空间之前，项目占据的主轴空间，浏览器根据这个属性，计算主轴是否有多余空间</p>
-<pre><code class="css">flex-basis: &lt;length&gt; | auto;
+<p>执行上面的函数后会返回如下面的格式一样的字符串</p>
+<pre><code class="text">data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMgAAADICAYAAACtWK6eAAAgAElEQVR4Xu1dB3hUxfb/bc3uppOeQOgIAioKCiqWJ/bysFd89vcXe0WfvSJ2wY6gPhX1WZ...
 </code></pre>
-<p>默认值：auto，即项目本来的大小, 这时候 item 的宽高取决于 width 或 height 的值。</p>
-</li>
-<li><p>flex-grow: 定义项目的放大比例</p>
-<pre><code class="css"> flex-grow: &lt;number&gt;;
+<p><strong><em>注意：图片越大，转换后的 base64 编码越长，尽量避免对大图进行 DataURL 转换，防止转换后的长度超出浏览器限制</em></strong></p>
+<p>以下是下载图片的示例代码：</p>
+<pre><code class="javascript">downLoad(downloadName, url) {
+    const tag = document.createElement(&#39;a&#39;);
+    // 此属性的值就是下载时图片的名称，注意，名称中不能有半角点，否则下载时后缀名会错误
+    tag.setAttribute(&#39;download&#39;, downloadName.replace(/\./g, &#39;。&#39;));
+
+    const image = new Image();
+    // 设置 image 的 url, 添加时间戳，防止浏览器缓存图片
+    image.src = url + &#39;?time=&#39; + new Date().getTime();
+    //重要，设置 crossOrigin 属性，否则图片跨域会报错
+    image.setAttribute(&#39;crossOrigin&#39;, &#39;Anonymous&#39;);
+    // 图片未加载完成时操作会报错
+    image.onload = () =&gt; {
+        tag.href = getImageDataURL(image);
+        tag.click();
+    };
+},
 </code></pre>
-<p> 默认值为 0，即如果存在剩余空间，也不放大。<br> 如果所有项目的 flex-grow 属性都为 1，则它们将等分剩余空间。(如果有的话)<br> 如果一个项目的 flex-grow 属性为 2，其他项目都为 1，则前者占据的剩余空间将比其他项多一倍。</p>
-</li>
-<li><p>flex-shrink: 定义了项目的缩小比例</p>
-<pre><code class="css"> flex-shrink: &lt;number&gt;;
-</code></pre>
-<p> 默认值: 1，即如果空间不足，该项目将缩小，负值对该属性无效。</p>
-<p> 如果所有项目的 flex-shrink 属性都为 1，当空间不足时，都将等比例缩小。<br> 如果一个项目的 flex-shrink 属性为 0，其他项目都为 1，则空间不足时，前者不缩小。</p>
-</li>
-<li><p>flex: flex-grow, flex-shrink 和 flex-basis的简写</p>
-<pre><code class="css"> flex: none | [ &lt;&#39;flex-grow&#39;&gt; &lt;&#39;flex-shrink&#39;&gt;? || &lt;&#39;flex-basis&#39;&gt; ]
-</code></pre>
-<p> flex 的默认值是以上三个属性值的组合。假设以上三个属性同样取默认值，则 flex 的默认值是 0 1 auto。</p>
-</li>
-<li><p>align-self: 允许单个项目有与其他项目不一样的对齐方式</p>
-<p> 单个项目覆盖 align-items 定义的属性  </p>
-<p> 默认值为 auto，表示继承父元素的 align-items 属性，如果没有父元素，则等同于 stretch。</p>
-<pre><code class="css"> align-self: auto | flex-start | flex-end | center | baseline | stretch;
-</code></pre>
-<p> 这个跟 align-items 属性时一样的，只不过 align-self 是对单个项目生效的，而 align-items 则是对容器下的所有项目生效的。</p>
-</li>
-</ol>
 <hr>
-<p><strong>欢迎转载，转载请注明出处：<a href="https://newkami.cn/2018/03/29/flex-layout/">https://newkami.cn/2018/03/29/flex-layout/</a></strong></p>
+<p><strong>欢迎转载，转载请注明出处：<a href="https://newkami.cn/2019/01/28/js-download-image/">https://newkami.cn/2019/01/28/js-download-image/</a></strong></p>
 
         
                 <blockquote style="margin: 2em 0 0;padding: 0.5em 1em;border-left: 3px solid #F44336;background-color: #F5F5F5;list-style: none;">
@@ -663,7 +588,7 @@ align-content
                             <a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/"><img alt="知识共享许可协议" style="border-width:0" src="https://i.creativecommons.org/l/by-nc-nd/4.0/88x31.png"></a><br>本博客采用<a rel="license" target="_blank" href="http://creativecommons.org/licenses/by-nc-nd/4.0/">知识共享署名-非商业性使用-禁止演绎 4.0 国际许可协议</a>进行许可。
                         </strong>
                         <br>
-                        <strong>本文链接：</strong><a href="https://newkami.cn/2018/03/29/flex-layout/">https://newkami.cn/2018/03/29/flex-layout/</a>
+                        <strong>本文链接：</strong><a href="https://newkami.cn/2019/01/28/js-download-image/">https://newkami.cn/2019/01/28/js-download-image/</a>
                     </p>
                 </blockquote>
         
@@ -685,21 +610,13 @@ align-content
             <nav class="material-nav mdl-color-text--grey-50 mdl-cell mdl-cell--12-col">
     <!-- Prev Nav -->
     
-        <a href="/2018/05/19/js-input-length/" id="post_nav-newer" class="prev-content">
-            <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
-                <i class="material-icons">arrow_back</i>
-            </button>
-            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-            新篇
-        </a>
-    
 
     <!-- Section Spacer -->
     <div class="section-spacer"></div>
 
     <!-- Next Nav -->
     
-        <a href="/2017/12/25/install-nginx/" id="post_nav-older" class="next-content">
+        <a href="/2019/01/11/vue-router-decentralization/" id="post_nav-older" class="next-content">
             旧篇
             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--icon mdl-color--white mdl-color-text--grey-900" role="presentation">
